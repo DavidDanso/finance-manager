@@ -1,0 +1,87 @@
+{% load static %}
+<!--  -->
+{% load active_link_tags %}
+<!--======================== Nav-Section ================================-->
+<nav class="navbar navbar-expand-lg fixed-top menu" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img
+        src="{% static 'images/logo.svg' %}"
+        class="img-fluid"
+        id="logo"
+        alt="logo"
+      />
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span></span><span></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if request.user.role == 'admin' %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 left--links">
+        <li class="nav-item">
+          <a
+            class="nav-link {% active_link 'dashboard' %}"
+            href="{% url 'dashboard' %}"
+            >Admin Dashboard</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Users</a>
+        </li>
+      </ul>
+      {% elif request.user.role == 'accountant' %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 left--links">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Accountant Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Reports</a>
+        </li>
+      </ul>
+      {% endif %}
+      <ul class="navbar-nav mb-2 mb-lg-0" id="rightNav">
+        <!--  -->
+        <li class="nav-item align-self-center">
+          <a class="nav-link" href="#">
+            <img
+              id="notification_img"
+              src="{% static '/images/notifications-outline.svg' %}"
+              class="img-fluid"
+              alt="notification_img"
+            />
+            <sup
+              ><img
+                id="notification_dot"
+                src="{% static '/images/dot.svg' %}"
+                class="img-fluid"
+                alt="notification_dot"
+            /></sup>
+          </a>
+        </li>
+        <!--  -->
+        <li class="nav-item align-self-center" id="nav_span"><span>|</span></li>
+        <!--  -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#">
+            <img
+              id="profile_img"
+              src="{% static '/images/default-avatar.png' %}"
+              class="img-fluid rounded-circle"
+              alt="profile_img"
+            />
+            <small>{{request.user.profile}}</small>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

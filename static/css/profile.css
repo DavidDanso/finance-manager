@@ -1,0 +1,555 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--main-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Apercu-Bold";
+  src: url("../fonts/Apercu-Bold.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "GTAmerica-Light";
+  src: url("../fonts/GTAmerica-Light.woff2");
+}
+.page-content {
+  --main-color: #171b23;
+  --text-color: #f6f6f3;
+  --header-font: "Apercu-Bold";
+  --text-font: "GTAmerica-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/****************************************** NAVIGATION ************************************/
+#mainNav {
+  transform: translateY(0);
+  transition: padding-top 0.3s, padding-bottom 0.3s;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  background: var(--text-color);
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 9;
+  width: 100vw;
+}
+#profile_img {
+  width: 35px;
+}
+#mainNav small {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+#mainNav .navbar-brand {
+  color: #8858d1;
+}
+.left--links a {
+  font-family: var(--text-font);
+  color: #999;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  line-height: normal;
+}
+
+/* notification */
+#nav_span {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+#notification_img {
+  width: 25px;
+  vertical-align: middle;
+}
+#notification_dot {
+  width: 9px;
+  margin-left: -28%;
+  margin-top: -35%;
+}
+
+/****************************************** Hero-Section ************************************/
+#hero {
+  margin-top: 22%;
+}
+.hero-intro {
+  margin: 3%;
+}
+#hero-header {
+  margin-left: 7%;
+}
+#return_back {
+  width: 5%;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--text-color);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 3%;
+}
+.hero-intro h1 {
+  margin-top: 2%;
+  font-size: 5vh;
+  color: var(--text-color);
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.hero-intro small {
+  font-size: 2vh;
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#user_profile {
+  border: 1px solid #f6f6f669;
+  border-radius: 5px;
+  margin-top: 2%;
+}
+#user_profile .card {
+  background: #20242c;
+  margin: 3%;
+}
+#user_profile h5 {
+  color: #7b8fa1;
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 1.9vh;
+  margin-bottom: 10%;
+  text-align: center;
+}
+#user_profile form label {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--header-font);
+  font-size: 2vh;
+}
+#user_profile form input {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+  border: transparent;
+  background: var(--main-color);
+}
+#user_profile form input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #f6f6f669;
+  color: var(--text-color);
+}
+#user_profile form input::placeholder {
+  color: #f6f6f6c2;
+  font-size: 1.7vh;
+}
+/*  */
+#action_btns {
+  margin-top: 12%;
+  margin-bottom: 1%;
+}
+#cancel_ {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+}
+#action_btns #update_profile {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  background: #005c4b;
+  transition: all 0.5s ease-in-out;
+}
+#action_btns #update_profile:hover {
+  color: var(--text-color);
+  background: #0a332c;
+  transition: all 0.5s ease-in-out;
+}
+#user_profile a {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 1.9vh;
+  margin-top: 4px;
+}
+#trash {
+  width: 28px;
+  margin-left: 7px;
+}
+
+/*  */
+#logout {
+  margin-left: 5%;
+  margin-bottom: 3%;
+}
+#logout_img {
+  width: 22px;
+  margin-left: 7px;
+}
+
+/* delete-account-modal */
+#delete-account-modal .modal-dialog {
+  max-width: 600px;
+}
+#delete-account-modal .modal-content {
+  background-color: var(--main-color);
+  border: 1px solid var(--text-color);
+}
+#delete-account-modal .modal-header {
+  border-bottom: transparent;
+  margin-bottom: -2%;
+}
+#close_img {
+  width: 4.5%;
+}
+#delete-account-modal #warning {
+  background: #282218;
+  border: 1px solid #574017;
+  margin-bottom: 3%;
+}
+#delete-account-modal h6 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 2vh;
+  text-align: center;
+}
+#delete-account-modal h6 span {
+  border-bottom: 1px solid var(--text-color);
+}
+#delete-account-modal h3 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 1.9vh;
+  text-align: center;
+  padding: 3%;
+}
+#delete-account-modal h4 {
+  color: var(--text-color);
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 2.2vh;
+  margin-bottom: 6%;
+  text-align: center;
+  line-height: 1.2;
+}
+#delete_account {
+  color: var(--text-color);
+  background: #951c2f;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  transition: all 0.5s ease-in-out;
+  margin-left: 10px;
+}
+#delete_account:hover {
+  color: var(--text-color);
+  background: #951c2eac;
+  transition: all 0.5s ease-in-out;
+}
+#delete-account-modal .modal-footer {
+  margin-bottom: -2%;
+}
+
+/*  */
+#invoice_btn {
+  color: var(--text-color);
+  background: #9384d1;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  transition: all 0.5s ease-in-out;
+  margin-left: 10px;
+}
+#invoice_btn:hover {
+  color: var(--text-color);
+  background: #9484d1d6;
+  transition: all 0.5s ease-in-out;
+}
+
+/* profile image card */
+#invoice--img-card {
+  border: 1px solid #f6f6f62d;
+}
+#invoice--img-default {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+}
+#invoice--img-card a,
+#invoice--img-card br,
+#user_avatar-clear_id {
+  display: none;
+}
+label[for="user_avatar-clear_id"],
+label[for="user_avatar-clear_id"] + br,
+label[for="user_avatar-clear_id"] + br + span,
+label[for="user_avatar-clear_id"] + br + span + span {
+  display: none;
+}
+#id_user_avatar {
+  margin-top: -4%;
+}
+/****************************************** Footer-Section ************************************/
+footer {
+  margin-top: 2%;
+}
+footer p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+  text-align: center;
+}
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+  body {
+    display: none;
+  }
+  /* #action_btns a span { */
+  /* display: none; */
+  /* } */
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body {
+    display: none;
+  }
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+  /* logo */
+
+  /*  */
+  #mainNav small {
+    font-size: 1.1rem;
+  }
+  .left--links {
+    margin-left: 4%;
+  }
+  .left--links a {
+    font-size: 1.1rem;
+  }
+
+  /****** hero-Section ******/
+  #hero {
+    margin-top: 12%;
+  }
+  .hero-intro {
+    margin: 3%;
+  }
+  #hero-header {
+    margin-left: 7%;
+  }
+  #return_back {
+    width: 5%;
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 3%;
+  }
+  .hero-intro h1 {
+    margin-top: 1%;
+    font-size: 6vh;
+    letter-spacing: 1px;
+  }
+  .hero-intro h1 span {
+    float: right;
+  }
+  .hero-intro small {
+    font-size: 2vh;
+    letter-spacing: 1px;
+    margin-top: 1%;
+    margin-bottom: 0%;
+  }
+  .hero-intro h3 {
+    font-size: 2.5vh;
+    margin-top: 5%;
+  }
+  #user_profile {
+    margin-top: 2%;
+  }
+  #user_profile .card {
+    margin: 3%;
+  }
+  #user_profile h5 {
+    font-size: 1.9vh;
+    margin-bottom: 1%;
+    text-align: center;
+  }
+  #user_profile form label {
+    font-size: 2vh;
+  }
+  #user_profile form input {
+    font-size: 1.8vh;
+  }
+  #user_profile form input::placeholder {
+    font-size: 1.7vh;
+  }
+  /*  */
+  #action_btns {
+    margin-top: 2%;
+    margin-bottom: 1%;
+  }
+  #cancel_ {
+    font-size: 1.8vh;
+  }
+  #action_btns #update_profile {
+    font-size: 2vh;
+  }
+  #user_profile a {
+    font-size: 1.9vh;
+    margin-top: 4px;
+  }
+  #trash {
+    width: 22px;
+    margin-left: 7px;
+  }
+  #logout {
+    margin-left: 5%;
+    margin-bottom: 3%;
+  }
+  #logout_img {
+    width: 22px;
+    margin-left: 7px;
+  }
+  /* delete-account-modal */
+  #delete-account-modal .modal-dialog {
+    max-width: 600px;
+  }
+  #delete-account-modal .modal-header {
+    margin-bottom: -2%;
+  }
+  #close_img {
+    width: 3.5%;
+  }
+  #delete-account-modal #warning {
+    margin-bottom: 3%;
+  }
+  #delete-account-modal h3 {
+    font-size: 1.9vh;
+    text-align: center;
+    padding: 3%;
+  }
+  #delete-account-modal h4 {
+    font-size: 2.1vh;
+    margin-bottom: 6%;
+    text-align: center;
+    line-height: 1.2;
+  }
+  #delete-account-modal h6 {
+    font-size: 1.8vh;
+    text-align: center;
+  }
+  #delete_account {
+    letter-spacing: 1px;
+    font-size: 2vh;
+    margin-left: 10px;
+  }
+  #delete-account-modal .modal-footer {
+    margin-bottom: -2%;
+  }
+
+  /*  */
+  #invoice_btn {
+    letter-spacing: 1px;
+    font-size: 2vh;
+    margin-left: 10px;
+  }
+
+  /* profile image card */
+  #invoice--img-default {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+  #id_user_avatar {
+    margin-top: 1%;
+  }
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+}
