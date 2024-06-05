@@ -1,0 +1,71 @@
+<!--  -->
+{% load humanize %}
+<!--  -->
+<div id="desktop-table">
+  <div class="container">
+    <div class="desktop-table-intro">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-hover" id="invoice_table">
+            <thead>
+              <tr>
+                <th scope="col">username</th>
+                <th scope="col">date</th>
+                <th scope="col">description</th>
+                <th scope="col">main category</th>
+                <th scope="col">status</th>
+                <th scope="col">sub category</th>
+                <th scope="col">payment</th>
+                <th scope="col">download</th>
+                <th scope="col">edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for report in reports %}
+              <tr>
+                <td>{{report.account_owner.username}}</td>
+                <td>{{report.created_time_stamp|date:"d F, Y"}}</td>
+                <td>{{report.description|truncatechars:25}}</td>
+                <td>{{report.main_category}}</td>
+                <td>
+                  {% if report.status == 'pending' %}
+                  <span class="badge pending">pending</span>
+                  {% elif report.status == 'reject' %}
+                  <span class="badge reject">reject</span>
+                  {% elif report.status == 'correction' %}
+                  <span class="badge correction">correction</span>
+                  {% else %}
+                  <span class="badge approve">approve</span>
+                  {% endif %}
+                </td>
+                <td>{{report.sub_category}}</td>
+                <td>{{report.payment|floatformat:2|intcomma}}</td>
+                <td>
+                  <a href="{% url 'download_report' report.id %}"
+                    ><ion-icon name="download-outline"></ion-icon
+                  ></a>
+                </td>
+                {% if report.status == 'reject' or report.status == 'approve' %}
+                <td class="icon-cell"></td>
+                {% else %}
+                <td>
+                  <a href="#">
+                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                  </a>
+                </td>
+                <!--  -->
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <!-- end table -->
+        </div>
+        <!-- end card-body -->
+      </div>
+      <!-- end card -->
+    </div>
+    <!-- End desktop-table-intro-->
+  </div>
+  <!-- End container -->
+</div>

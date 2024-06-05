@@ -185,7 +185,7 @@ a:hover {
 
 /****************************************** Hero-Section ************************************/
 #hero {
-  margin-top: 7%;
+  margin-top: 6%;
 }
 .hero-intro {
   margin: 3%;
@@ -223,7 +223,7 @@ a:hover {
 
 /* dashboard card */
 #dashboard_card #stats {
-  background-color: #c1c7d1ca;
+  background-color: #c1c7d17d;
   border-radius: 5px;
   padding: 3%;
 }
@@ -261,9 +261,85 @@ a:hover {
   margin-top: 3%;
 }
 
+/****************************************** reports-section ************************************/
+#reports {
+  margin-top: -1%;
+}
+.reports-intro {
+  margin: 3%;
+}
+.reports-intro .card {
+  width: 85%;
+  background-color: transparent;
+  border: 1px solid #7b8fa199;
+}
+.reports-intro p {
+  font-size: 2.2vh;
+  font-family: var(--header-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+}
+.reports-intro p small {
+  font-family: var(--text-font);
+  color: var(--text-color);
+}
+.reports-intro label {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  margin-bottom: 2%;
+  margin-left: 13%;
+}
+.reports-intro input {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+  background: transparent;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-left: 10%;
+}
+.reports-intro select {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+  margin-left: 12%;
+  background: transparent;
+}
+.reports-intro select:focus,
+.reports-intro input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #7b8fa199;
+  color: var(--text-color);
+}
+#search-btn {
+  margin-top: 10px;
+}
+#search-btn ion-icon {
+  font-size: 2.6rem;
+  margin-left: 4%;
+  transition: all 0.5s ease-in-out;
+  vertical-align: middle;
+  color: var(--text-color);
+}
+#search-btn ion-icon:hover {
+  color: #ffffff9a;
+  transition: all 0.5s ease-in-out;
+}
+#search-btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: transparent;
+}
 /****************************************** Desktop-Table-Section ************************************/
 #desktop-table {
-  margin-top: 2%;
+  margin-top: 1%;
 }
 .desktop-table-intro {
   margin: 3%;

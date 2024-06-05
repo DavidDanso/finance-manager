@@ -1,4 +1,6 @@
 {% load static %}
+<!--  -->
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en" class="js has-scroll-init has-scroll-smooth">
   <head>
@@ -27,6 +29,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static '/css/admin_dashboard.css' %}" />
+
+    <!--  -->
+    <script src="{% static '/js/htmx.min.js' %}"></script>
+    <!--  -->
 
     <script>
       document.documentElement.className = "js";
@@ -155,6 +161,70 @@
           <!-- End container-fluid -->
         </div>
         <!-- End hero -->
+
+        <!--=========================================== Reports-Section ===============================-->
+        <div id="reports">
+          <div class="container-fluid">
+            <div class="reports-intro">
+              <!-- serach for reports -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <!--  -->
+                      <p>Search Reports by <small>username or date</small></p>
+                      <form
+                        hx-get="{% url 'dashboard' %}"
+                        hx-target="#desktop-table"
+                        hx-swap="outerHTML"
+                      >
+                        <div class="row">
+                          <div class="col-md-5">
+                            <!--  -->
+                            <label for="id_username">Username</label>
+                            {{ filter.form.username|add_class:"form-select" }}
+                            <!--  -->
+                            <!-- {% render_field filter.form.username %} -->
+                          </div>
+                          <!-- end username -->
+                          <div class="col-md-5">
+                            <label for="id_created_time_stamp">Date</label>
+                            {{ filter.form.created|add_class:"form-control" }}
+                          </div>
+                          <!-- end date -->
+
+                          <div
+                            class="col-md-2 align-self-center"
+                            id="search-btn"
+                          >
+                            <button type="submit" class="btn" id="search-btn">
+                              <ion-icon name="search-circle"></ion-icon>
+                            </button>
+                          </div>
+                          <!-- end search-btn -->
+                        </div>
+                        <!-- end row -->
+                      </form>
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                </div>
+              </div>
+              <!-- end search for reports -->
+            </div>
+            <!-- End reports-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End reports -->
+
+        <!--=========================================== Modal ===============================-->
+        {% include 'reports-table.html' %}
+        <!-- end eports-table -->
+
+        <!--=========================================== Modal ===============================-->
+        {% include 'add-reports-modal.html' %}
+        <!-- end add_invoice_modal -->
       </div>
       <!-- End page--layout -->
     </main>

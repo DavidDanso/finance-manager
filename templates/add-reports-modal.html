@@ -1,0 +1,101 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!--=========================================== create-invoice-offcanvas ===============================-->
+<div id="create-report-offcanvas">
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+    data-bs-backdrop="static"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">
+        Create new report
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <!-- end offcanvas-header -->
+    <div class="offcanvas-body">
+      <!--  -->
+
+      <form action="{% url 'dashboard' %}" method="POST">
+        {% csrf_token %}
+        <div class="row" id="report-add-row">
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label
+                for="exampleFormControlReportDescription"
+                class="form-label"
+                >Description
+                <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.description}}
+            </div>
+            <!-- end description -->
+          </div>
+          <!-- end col-report-description -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlMainCategory" class="form-label"
+                >Main Category
+                <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.main_category}}
+            </div>
+            <!-- end main-category -->
+          </div>
+          <!-- end col-report-main-category -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlSubCategory" class="form-label"
+                >Sub Category
+                <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.sub_category}}
+            </div>
+            <!-- end sub-category -->
+          </div>
+          <!-- end col-report-sub-category -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlRecipts" class="form-label"
+                >Recipts <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.receipt}}
+            </div>
+            <!-- end recipts -->
+          </div>
+          <!-- end col-report-recipts -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlPayment" class="form-label"
+                >Payment <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.payment}}
+            </div>
+            <!-- end payment -->
+          </div>
+          <!-- end col-report-payment -->
+        </div>
+        <!-- end row -->
+
+        <input type="submit" id="save--btn" class="btn" value="Save report" />
+      </form>
+      <!-- end form -->
+    </div>
+    <!-- end offcanvas-body -->
+  </div>
+  <!-- end off-canvas -->
+</div>
+<!-- end create-report-offcanvas -->
