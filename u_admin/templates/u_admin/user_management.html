@@ -1,4 +1,6 @@
 {% load static %}
+<!--  -->
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en" class="js has-scroll-init has-scroll-smooth">
   <head>
@@ -15,18 +17,18 @@
 
     <meta name="author" content="the_desiinger" />
     <link rel="icon" href="{% static '/images/favicon.svg' %}" />
-    <title>Finance-Manager | dashboard Page</title>
+    <title>Finance-Manager | manage users Page</title>
 
     <!-- Preload CSS -->
     <link href="{% static '/css/normalize.css' %}" />
     <link
       rel="preload"
       as="style"
-      href="{% static '/css/admin_dashboard.css' %}"
+      href="{% static '/css/user_management.css' %}"
     />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static '/css/admin_dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/user_management.css' %}" />
 
     <script>
       document.documentElement.className = "js";
@@ -71,77 +73,17 @@
           <div class="container-fluid">
             <div class="hero-intro">
               <h1>
-                Welcome back, {{request.user.profile.username}}
+                User Management
                 <button
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
                   aria-controls="offcanvasRight"
                   class="px-4 btn"
-                  id="new_report"
+                  id="new_user"
                 >
-                  <ion-icon name="create-outline"></ion-icon> New Report
+                  <ion-icon name="person-add-outline"></ion-icon> new user
                 </button>
               </h1>
-
-              <!-- dashboard cards -->
-              <div class="row" id="dashboard_card">
-                <div class="col-md-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6>
-                        <ion-icon name="timer-outline"></ion-icon>
-                        pending reports
-                      </h6>
-                      <div id="stats">
-                        <center>
-                          <small>20</small>
-                        </center>
-                      </div>
-                      <!-- end stats -->
-                    </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6 id="payment">
-                        <ion-icon name="cash-outline"></ion-icon>
-                        total payments
-                      </h6>
-                      <div id="stats">
-                        <center>
-                          <small>$50,000.00</small>
-                        </center>
-                      </div>
-                      <!-- end stats -->
-                    </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4 align-self-center">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6 id="users">
-                        <ion-icon name="people-outline"></ion-icon>
-                        <a href="{% url 'users' %}">
-                          <span>manage users</span>
-                        </a>
-                      </h6>
-                    </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end dashboard cards -->
 
               <img
                 src="{% static 'images/line.png'%}"
@@ -149,12 +91,47 @@
                 id="page_line"
                 alt="page_line"
               />
+
+              <!-- user card -->
+              <div class="row" id="user_cards">
+                {% for user in users reversed %}
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5>{{ user.username }}</h5>
+                      <h6 id="user_role">
+                        <ion-icon name="contrast-outline"></ion-icon>
+                        <span>{{ user.user.get_role_display }}</span>
+                      </h6>
+
+                      <hr id="line" />
+                      <div id="action_btns">
+                        <a href="#">
+                          <ion-icon name="create-sharp"></ion-icon>
+                        </a>
+                        <a href="#" id="delete_user">
+                          <ion-icon name="trash-sharp"></ion-icon>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end user card -->
+                </div>
+                <!-- end col -->
+                {% endfor %}
+              </div>
+              <!-- end row -->
             </div>
             <!-- End hero-intro-->
           </div>
           <!-- End container-fluid -->
         </div>
         <!-- End hero -->
+
+        <!--  -->
+        {% include 'u_admin/add-new-user.html' %}
+        <!--  -->
       </div>
       <!-- End page--layout -->
     </main>
@@ -177,6 +154,6 @@
     ></script>
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
-    <script src="{% static '/js/admin_dashboard.js' %}"></script>
+    <script src="{% static '/js/user_management.js' %}"></script>
   </body>
 </html>

@@ -1,0 +1,95 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!--=========================================== create-user-offcanvas ===============================-->
+<div id="create-user-offcanvas">
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+    data-bs-backdrop="static"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Create new user</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <!-- end offcanvas-header -->
+    <div class="offcanvas-body">
+      <!--  -->
+
+      <form action="{% url 'users' %}" method="POST">
+        {% csrf_token %}
+        <div class="row" id="report-add-row">
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label for="exampleFormControlName" class="form-label"
+                >Name <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.first_name}}
+            </div>
+            <!-- end full_name -->
+          </div>
+          <!-- end col-full_name -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormUsername" class="form-label"
+                >Username <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.username}}
+            </div>
+            <!-- end username -->
+          </div>
+          <!-- end col-username -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormRole" class="form-label"
+                >User role <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.role}}
+            </div>
+            <!-- end role -->
+          </div>
+          <!-- end col-user-role -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlPassword" class="form-label"
+                >Password <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.password1}}
+            </div>
+            <!-- end password1 -->
+          </div>
+          <!-- end col-user-password1 -->
+
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlPassword" class="form-label"
+                >Confirm Password
+                <sup class="text-danger fw-bold fs-6">*</sup></label
+              >
+              {{form.password2}}
+            </div>
+            <!-- end password2 -->
+          </div>
+          <!-- end col-user-password2 -->
+        </div>
+        <!-- end row -->
+
+        <input type="submit" id="save--btn" class="btn" value="Save user" />
+      </form>
+      <!-- end form -->
+    </div>
+    <!-- end offcanvas-body -->
+  </div>
+  <!-- end off-canvas -->
+</div>
+<!-- end create-user-offcanvas -->

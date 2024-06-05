@@ -16,7 +16,7 @@ class User(AbstractUser):
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=255, unique=True)
-    username = models.CharField(max_length=255, unique=True)
+    username = models.CharField(max_length=255, unique=True, blank=True, null=True)
     email = models.EmailField(max_length=255, unique=True)
     updated_time_stamp = models.DateTimeField(auto_now=True)
     created_time_stamp = models.DateTimeField(auto_now_add=True)
