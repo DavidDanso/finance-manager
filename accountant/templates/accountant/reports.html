@@ -1,0 +1,182 @@
+{% load static %}
+<!--  -->
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Enhance your reporting capabilities with the Excel Report Manager App."
+    />
+    <meta
+      name="keywords"
+      content="report manager, Excel reports, reporting software"
+    />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>excel-report-manager | Reports Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/reports.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/reports.css' %}" />
+
+    <!--  -->
+    <script src="{% static '/js/htmx.min.js' %}"></script>
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    {% include 'nav.html' %}
+    <!-- end nav -->
+
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Section ===============================-->
+        <div id="hero">
+          <div class="container-fluid">
+            <div class="hero-intro">
+              <div class="row">
+                <div class="col-md-7">
+                  <!-- serach for reports -->
+                  <div class="card">
+                    <div class="card-body">
+                      <!--  -->
+                      <p>Search Reports by <small>username or date</small></p>
+                      <!--  -->
+                      <hr />
+                      <form
+                        hx-get="{% url 'reports' %}"
+                        hx-target="#desktop-table"
+                        hx-swap="outerHTML"
+                      >
+                        <div class="row">
+                          <div class="col-md-5">
+                            <!--  -->
+                            <label for="id_username">Username</label>
+                            {{ filter.form.username|add_class:"form-select" }}
+                            <!--  -->
+                            <!-- {% render_field filter.form.username %} -->
+                          </div>
+                          <!-- end username -->
+                          <div class="col-md-5">
+                            <label for="id_created_time_stamp">Date</label>
+                            {{ filter.form.created|add_class:"form-control" }}
+                          </div>
+                          <!-- end date -->
+
+                          <div
+                            class="col-md-2 align-self-center"
+                            id="search-btn"
+                          >
+                            <button type="submit" class="btn" id="search-btn">
+                              <ion-icon name="search-circle"></ion-icon>
+                            </button>
+                          </div>
+                          <!-- end search-btn -->
+                        </div>
+                        <!-- end row -->
+                      </form>
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end search for reports -->
+                </div>
+                <!-- end search for reports-col  -->
+
+                <div class="col-md-5 align-self-center">
+                  <button
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                    class="px-4 btn"
+                    id="new_report"
+                  >
+                    <ion-icon name="create-outline"></ion-icon> New Report
+                  </button>
+                </div>
+                <!-- end add report -->
+              </div>
+              <!-- end row -->
+
+              <img
+                src="{% static 'images/line.png'%}"
+                class="img-fluid d-flex mx-auto"
+                id="page_line"
+                alt="page_line"
+              />
+            </div>
+            <!-- End hero-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End hero -->
+
+        <!--=========================================== Modal ===============================-->
+        {% include 'reports-table.html' %}
+        <!-- end eports-table -->
+
+        <!--=========================================== Modal ===============================-->
+        {% include 'add-reports-modal.html' %}
+        <!-- end add_invoice_modal -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/reports.js' %}"></script>
+  </body>
+</html>
