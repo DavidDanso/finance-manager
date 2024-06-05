@@ -259,10 +259,7 @@ a:hover {
   justify-content: space-between;
 }
 #action_btns a ion-icon {
-  font-size: 1.3rem;
-}
-#action_btns #delete_user {
-  color: #ff4539;
+  font-size: 1.6rem;
 }
 
 /*  */

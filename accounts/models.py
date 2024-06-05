@@ -24,5 +24,5 @@ class Profile(models.Model):
 
     # display user with full name in the database
     def __str__(self):
-        return self.name
+        return self.username
     

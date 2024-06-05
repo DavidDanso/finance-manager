@@ -1,0 +1,430 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--main-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Apercu-Bold";
+  src: url("../fonts/Apercu-Bold.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "GTAmerica-Light";
+  src: url("../fonts/GTAmerica-Light.woff2");
+}
+.page-content {
+  --main-color: #171b23;
+  --text-color: #f6f6f3;
+  --header-font: "Apercu-Bold";
+  --text-font: "GTAmerica-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/****************************************** user--details-Hero-Section ************************************/
+#user--details-hero {
+  margin-top: 10%;
+}
+.user--details-intro {
+  margin: 3%;
+}
+#return_back {
+  width: 5%;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--text-color);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 3%;
+}
+
+/* card */
+.user--details-intro h5 {
+  font-size: 1.5rem;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+.user--details-intro #ion-icon--card {
+  border: 1px solid #6b728086;
+  margin-top: 4%;
+  padding: 2%;
+  margin: 1%;
+  border-radius: 5px;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+.user--details-intro ion-icon {
+  font-size: 1.4rem;
+  color: #9384d1;
+  vertical-align: middle;
+}
+
+/*  input fields */
+.user--details-intro .col-md-12 {
+  margin-top: 11%;
+}
+.user--details-intro label {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+.user--details-intro .input {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+  background: transparent;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.user--details-intro select {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+}
+.user--details-intro select:focus,
+.user--details-intro input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #7b8fa199;
+  color: var(--main-color);
+}
+#save--btn {
+  color: var(--text-color);
+  background: #3e6567;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  transition: all 0.5s ease-in-out;
+}
+#save--btn:hover {
+  color: var(--text-color);
+  background: #3e6567c4;
+  transition: all 0.5s ease-in-out;
+}
+
+/*  */
+#delete--btn ion-icon {
+  color: #cf1616;
+  font-size: 1.6rem;
+}
+
+/* delete-user-modal */
+#delete-user-modal .modal-dialog {
+  max-width: 600px;
+}
+#delete-user-modal .modal-content {
+  background-color: var(--main-color);
+  border: 1px solid var(--text-color);
+}
+#delete-user-modal .modal-header {
+  border-bottom: transparent;
+  margin-bottom: -2%;
+}
+#close_img {
+  width: 4.5%;
+}
+#delete-user-modal #warning {
+  background: #282218;
+  border: 1px solid #574017;
+  margin-bottom: 3%;
+}
+#delete-user-modal h6 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 2vh;
+  text-align: center;
+}
+#delete-user-modal h6 span {
+  border-bottom: 1px solid var(--text-color);
+}
+#delete-user-modal h3 {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  letter-spacing: 1px;
+  font-size: 1.9vh;
+  text-align: center;
+  padding: 3%;
+}
+#delete-user-modal h4 {
+  color: var(--text-color);
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  font-size: 2.2vh;
+  margin-bottom: 6%;
+  text-align: center;
+  line-height: 1.2;
+}
+#delete_user {
+  color: var(--text-color);
+  background: #951c2f;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 2vh;
+  transition: all 0.5s ease-in-out;
+  margin-left: 10px;
+}
+#delete_user:hover {
+  color: var(--text-color);
+  background: #951c2eac;
+  transition: all 0.5s ease-in-out;
+}
+#delete-user-modal .modal-footer {
+  margin-bottom: -2%;
+}
+
+/*  */
+#user_avatar-clear_id {
+  display: none;
+}
+
+/*  */
+#user--details-hero h6 {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: #7b8fa1d7;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/*  */
+#form_error {
+  background: #dc8686;
+  border-radius: 5px;
+  margin-top: 3%;
+}
+.errorlist li {
+  list-style: none;
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+/****************************************** Footer-Section ************************************/
+footer {
+  margin-top: 6%;
+}
+footer p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+  text-align: center;
+}
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+  .hero-intro form label span,
+  .offcanvas--banner {
+    display: none;
+  }
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* body {
+    display: none;
+  } */
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+  /****** hero-Section ******/
+  #user--details-hero {
+    margin-top: 1%;
+  }
+  .user--details-intro {
+    margin: 3%;
+  }
+  #return_back {
+    width: 5%;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: -2%;
+  }
+
+  /* card */
+  .user--details-intro #main--card {
+    width: 60%;
+  }
+  .user--details-intro h5 {
+    font-size: 1.4rem;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .user--details-intro #ion-icon--card {
+    margin-top: 4%;
+    padding: 0%;
+    margin: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+  .user--details-intro ion-icon {
+    font-size: 1.4rem;
+  }
+
+  /*  input fields */
+  .user--details-intro .col-md-12 {
+    margin-top: 4%;
+  }
+  .user--details-intro label {
+    font-size: 1.1rem;
+  }
+  .user--details-intro .input {
+    font-size: 1.1rem;
+  }
+  #user--avatar_ {
+    width: 9%;
+  }
+  #save--btn {
+    font-size: 1.2rem;
+  }
+  #delete--btn ion-icon {
+    font-size: 1.5rem;
+  }
+
+  /*  */
+  .offcanvas--banner {
+    margin-top: 1%;
+    height: 10vh;
+    width: 100%;
+  }
+
+  /* delete-user-modal */
+  #delete-user-modal .modal-dialog {
+    max-width: 600px;
+  }
+  #delete-user-modal .modal-header {
+    margin-bottom: -2%;
+  }
+  #close_img {
+    width: 3.5%;
+  }
+  #delete-user-modal #warning {
+    margin-bottom: 3%;
+  }
+  #delete-user-modal h3 {
+    font-size: 1.9vh;
+    text-align: center;
+    padding: 3%;
+  }
+  #delete-user-modal h4 {
+    font-size: 2.1vh;
+    margin-bottom: 6%;
+    text-align: center;
+    line-height: 1.2;
+  }
+  #delete-user-modal h6 {
+    font-size: 1.8vh;
+    text-align: center;
+  }
+  #delete_user {
+    letter-spacing: 1px;
+    font-size: 2vh;
+    margin-left: 10px;
+  }
+  #delete-user-modal .modal-footer {
+    margin-bottom: -2%;
+  }
+
+  /*  */
+  #form_error {
+    margin-top: 1%;
+  }
+  .errorlist li {
+    font-size: 1.2rem;
+  }
+
+  /*  */
+  #user--details-hero h6 {
+    font-size: 1.1rem;
+  }
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+  body {
+    display: none;
+  }
+}

@@ -10,11 +10,15 @@ from reports.models import Report
 from openpyxl.utils import get_column_letter
 from io import BytesIO
 from reports.filters import ReportFilter
+from .forms import ProfileUpdateForm, UserUpdateForm
 
 
-# dashboard view
+# admin dashboard view
 @login_required
-def dashboard(request):
+def admin_dashboard(request):
+    if request.user.role != 'admin':
+        return redirect('login')
+    
     user = request.user.profile
     form = ReportCreationForm()
 
@@ -28,6 +32,8 @@ def dashboard(request):
         if form.is_valid():
             report = form.save(commit=False)
             report.account_owner = user
+            if request.user.role == "admin":
+                report.status = 'approve'
             report.save()
             return redirect('dashboard')
         
@@ -43,7 +49,8 @@ def dashboard(request):
 @login_required
 def user_management(request):
     if request.user.role != 'admin':
-        return HttpResponse('<h1>You do not have admin access to view this page</h1>')
+        return redirect('login')
+    
     users = Profile.objects.all()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -56,7 +63,6 @@ def user_management(request):
         form = UserCreationForm()
     context = {'users': users, 'form': form}    
     return render(request, 'u_admin/user_management.html', context)
-
 
 
 # download_report view
@@ -110,3 +116,29 @@ def download_report(request, report_id):
     response['Content-Disposition'] = f'attachment; filename=report_{report_id}.xlsx'
 
     return response
+
+
+@login_required
+def update_user(request, pk):
+    if request.user.role != 'admin':
+        return redirect('login')
+
+    profile = get_object_or_404(Profile, id=pk)
+    user = profile.user
+
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=user)
+        profile_form = ProfileUpdateForm(request.POST, instance=profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('users')
+    else:
+        user_form = UserUpdateForm(instance=user)
+        profile_form = ProfileUpdateForm(instance=profile)
+
+    return render(request, 'u_admin/edit-user.html', {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'user': user
+    })

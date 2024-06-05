@@ -24,13 +24,31 @@ class UserProfileForm(ModelForm):
         fields = '__all__'
         exclude = ['user']
 
+# add class to the input field
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        for name, fields in self.fields.items():
+            fields.widget.attrs.update({'class': 'input form-control'})
+
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['role']
 
+# add class to the input field
+    def __init__(self, *args, **kwargs):
+        super(UserUpdateForm, self).__init__(*args, **kwargs)
+        for name, fields in self.fields.items():
+            fields.widget.attrs.update({'class': 'input form-control'})
+
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['name', 'username', 'email']
+
+# add class to the input field
+    def __init__(self, *args, **kwargs):
+        super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+        for name, fields in self.fields.items():
+            fields.widget.attrs.update({'class': 'input form-control'})

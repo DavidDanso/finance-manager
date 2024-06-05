@@ -98,7 +98,7 @@
                 <div class="col-md-3">
                   <div class="card">
                     <div class="card-body">
-                      <h5>{{ user.username }}</h5>
+                      <h5>{{ user.name }}</h5>
                       <h6 id="user_role">
                         <ion-icon name="contrast-outline"></ion-icon>
                         <span>{{ user.user.get_role_display }}</span>
@@ -106,11 +106,8 @@
 
                       <hr id="line" />
                       <div id="action_btns">
-                        <a href="#">
+                        <a href="{% url 'edit-user' user.id %}" id="edit_user">
                           <ion-icon name="create-sharp"></ion-icon>
-                        </a>
-                        <a href="#" id="delete_user">
-                          <ion-icon name="trash-sharp"></ion-icon>
                         </a>
                       </div>
                     </div>
