@@ -46,6 +46,9 @@
           <a class="nav-link" href="#">Accountant Dashboard</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="#">Reports for Correction</a>
+        </li>
+        <li class="nav-item">
           <a
             class="nav-link {% active_link 'reports' %}"
             href="{% url 'reports' %}"
@@ -73,18 +76,19 @@
             /></sup>
           </a>
         </li>
-        <!--  -->
+        <!-- end notification -->
+
         <li class="nav-item align-self-center" id="nav_span"><span>|</span></li>
         <!--  -->
         <li class="nav-item dropdown">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{% url 'profile' %}">
             <img
               id="profile_img"
               src="{% static '/images/default-avatar.png' %}"
               class="img-fluid rounded-circle"
               alt="profile_img"
             />
-            <small>{{request.user.profile}}</small>
+            <small>{{request.user.profile.name}}</small>
           </a>
         </li>
       </ul>

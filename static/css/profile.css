@@ -195,12 +195,13 @@ a:hover {
   font-family: var(--text-font);
   font-size: 1.8vh;
   border: transparent;
+  border: 1px solid #7b8fa127;
   background: var(--main-color);
 }
 #user_profile form input:focus {
   box-shadow: none !important;
   outline: 0px !important;
-  border: 1px solid #f6f6f669;
+  border: 1px solid #7b8fa150;
   color: var(--text-color);
 }
 #user_profile form input::placeholder {
@@ -222,15 +223,19 @@ a:hover {
   color: var(--text-color);
   letter-spacing: 1px;
   font-family: var(--text-font);
-  font-size: 2vh;
-  background: #005c4b;
+  font-size: 1.2rem;
+  float: right;
+  cursor: pointer;
+  line-height: 1.4;
+  background-color: #3e6567;
   transition: all 0.5s ease-in-out;
 }
 #action_btns #update_profile:hover {
   color: var(--text-color);
-  background: #0a332c;
+  background: #3e6567c4;
   transition: all 0.5s ease-in-out;
 }
+
 #user_profile a {
   color: var(--text-color);
   font-family: var(--text-font);

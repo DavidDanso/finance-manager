@@ -337,6 +337,19 @@ a:hover {
   outline: 0px !important;
   border: transparent;
 }
+
+/* Change the color of the calendar icon in WebKit-based browsers to white */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%) brightness(200%);
+  cursor: pointer;
+}
+
+/* Additional styling for the date input */
+input[type="date"] {
+  padding: 5px;
+  font-size: 16px;
+}
+
 /****************************************** Desktop-Table-Section ************************************/
 #desktop-table {
   margin-top: 1%;

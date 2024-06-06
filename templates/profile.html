@@ -1,0 +1,185 @@
+{% load static %}
+<!--  -->
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Enhance your reporting capabilities with the Excel Report Manager App."
+    />
+    <meta
+      name="keywords"
+      content="report manager, Excel reports, reporting software"
+    />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>excel-report-manager | profile Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/profile.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/profile.css' %}" />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    {% include 'nav.html' %}
+    <!-- end nav -->
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Text ===============================-->
+        <div id="hero">
+          <div class="container-fluid">
+            <div class="hero-intro">
+              <h1>Profile Information</h1>
+
+              <div id="user_profile">
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  <div class="card">
+                    <div class="card-body">
+                      <h5>update your account settings below</h5>
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <label for="inputAddress" class="form-label"
+                            >Full name:
+                          </label>
+                          {{form.name}}
+                        </div>
+                        <!-- End inputFullName-->
+
+                        <div class="col-md-6">
+                          <label for="inputUsername" class="form-label"
+                            >Username:</label
+                          >
+                          {{form.username}}
+                        </div>
+                        <!-- End inputUsername-->
+
+                        <div class="col-md-6">
+                          <label for="inputEmail4" class="form-label"
+                            >Email:</label
+                          >
+                          {{form.email}}
+                        </div>
+                        <!-- End inputEmail4-->
+
+                        <div
+                          id="action_btns"
+                          class="d-flex justify-content-center"
+                        >
+                          <input
+                            type="submit"
+                            class="btn"
+                            id="update_profile"
+                            value="update profile"
+                          />
+                          <!--  -->
+                          <a
+                            href="#delete"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteAccountModal"
+                          >
+                            <img
+                              id="trash"
+                              src="{% static '/images/trash.png' %}"
+                              alt="trash"
+                            />
+                            <span>delete account</span>
+                          </a>
+                        </div>
+                        <!-- end action_btns-->
+                      </div>
+                      <!-- end row g-3-->
+                    </div>
+                    <!-- card-bod -->
+                  </div>
+                  <!-- card -->
+                </form>
+                <!-- End form-->
+
+                <div id="logout">
+                  <a href="{% url 'logout' %}">
+                    <img
+                      id="logout_img"
+                      src="{% static '/images/logout.png' %}"
+                      alt="logout_img"
+                    />
+                    logout from account
+                  </a>
+                </div>
+                <!--end delete-acc-->
+              </div>
+              <!-- user_profile -->
+            </div>
+            <!-- End hero-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End hero -->
+
+        <!--=========================================== delete-account-Modal--layout ===============================-->
+        {% include 'delete-account-modal.html' %}
+        <!-- End delete-folder-modal-->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/profile.js' %}"></script>
+  </body>
+</html>
