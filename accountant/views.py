@@ -4,9 +4,50 @@ from reports.forms import ReportCreationForm
 from django.http import HttpResponse
 from openpyxl import Workbook
 from reports.models import Report
+from django.contrib import messages
 from openpyxl.utils import get_column_letter
 from io import BytesIO
 from reports.filters import ReportFilter
+import pandas as pd
+from reports.forms import UploadFileForm
+from accounts.models import Profile
+from openpyxl import load_workbook
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['file']
+            if not file.name.endswith('.xlsx'):
+                messages.error(request, 'The uploaded file is not an Excel file.')
+                return redirect('upload_file')
+            try:
+                # Verify the file is an Excel file by attempting to load it
+                load_workbook(file)
+                data = pd.read_excel(file, engine='openpyxl')
+                for index, row in data.iterrows():
+                    try:
+                        account_owner = Profile.objects.get(username=row['username'])
+                    except Profile.DoesNotExist:
+                        messages.error(request, f"Profile with username {row['username']} does not exist.")
+                        continue
+                    Report.objects.create(
+                        account_owner=account_owner,
+                        description=row['description'],
+                        main_category=row['main category'],
+                        sub_category=row['sub category'],
+                        status=row['status'],
+                        payment=row['payment'],
+                    )
+                messages.success(request, 'File uploaded and reports created successfully.')
+                return redirect('upload_file')
+            except Exception as e:
+                messages.error(request, f'Error processing file: {e}')
+    else:
+        form = UploadFileForm()
+    return render(request, 'accountant/upload-reports.html', {'form': form})
+
 
 # create_report view
 @login_required(login_url='login')
@@ -47,7 +88,7 @@ def download_report(request, report_id):
     worksheet.title = "Report"
 
     # Define the headers
-    headers = ["Username", "Date", "Description", "Main Category", "Sub Category", "Payment"]
+    headers = ["username", "date", "description", "main category", "sub category", "payment"]
     worksheet.append(headers)
 
     # Add the report data

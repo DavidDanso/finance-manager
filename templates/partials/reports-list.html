@@ -39,13 +39,13 @@
                   {% endif %}
                 </td>
                 <td>{{report.sub_category}}</td>
-                <td>{{report.payment|floatformat:2|intcomma}}</td>
+                <td>${{report.payment|floatformat:2|intcomma}}</td>
                 <td>
                   <a href="{% url 'download_report' report.id %}"
                     ><ion-icon name="download-outline"></ion-icon
                   ></a>
                 </td>
-                {% if report.status == 'reject' or report.status == 'approve' %}
+                {% if report.status in 'reject, approve, pending' %}
                 <td class="icon-cell"></td>
                 {% else %}
                 <td>

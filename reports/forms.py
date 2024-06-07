@@ -2,8 +2,14 @@ from django import forms
 from django.forms import ModelForm
 from .models import *
 
+# Upload Reports form
+class UploadFileForm(forms.Form):
+    file = forms.FileField()
 
-# Client Creation form
+    
+
+
+# Report Creation form
 class ReportCreationForm(ModelForm):
     class Meta:
         model = Report
