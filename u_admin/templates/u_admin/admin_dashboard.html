@@ -1,6 +1,9 @@
 {% load static %}
 <!--  -->
 {% load widget_tweaks %}
+<!--  -->
+{% load humanize %}
+<!--  -->
 <!DOCTYPE html>
 <html lang="en" class="js has-scroll-init has-scroll-smooth">
   <head>
@@ -120,7 +123,9 @@
                       </h6>
                       <div id="stats">
                         <center>
-                          <small>$50,000.00</small>
+                          <small
+                            >${{ total_amount|floatformat:2|intcomma }}</small
+                          >
                         </center>
                       </div>
                       <!-- end stats -->

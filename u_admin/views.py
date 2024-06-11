@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from reports.forms import ReportCreationForm
 from django.http import HttpResponse
 from openpyxl import Workbook
+from django.db.models import Sum
 from reports.models import Report
 from openpyxl.utils import get_column_letter
 from io import BytesIO
@@ -30,6 +31,10 @@ def admin_dashboard(request):
     # get total pending reports
     pending_reports_count = Report.objects.filter(status='pending').count()
 
+    # get total amounts based on approved reports
+    total_amount = Report.objects.filter(status='approve').aggregate(Sum('payment'))['payment__sum']
+
+
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
         if form.is_valid():
@@ -41,7 +46,8 @@ def admin_dashboard(request):
             return redirect('dashboard')
         
     context = {'form': form, 'reports': reports, 
-               'filter': report_filter, 'reports_count': pending_reports_count}
+               'filter': report_filter, 'reports_count': pending_reports_count,
+               'total_amount': total_amount}
 
     if request.htmx:
         return render(request, 'reports/partials/reports-list.html', context)
