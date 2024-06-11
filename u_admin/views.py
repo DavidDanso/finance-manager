@@ -27,6 +27,9 @@ def admin_dashboard(request):
     report_filter = ReportFilter(request.GET, queryset=reports)
     reports = report_filter.qs
 
+    # get total pending reports
+    pending_reports_count = Report.objects.filter(status='pending').count()
+
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
         if form.is_valid():
@@ -37,7 +40,8 @@ def admin_dashboard(request):
             report.save()
             return redirect('dashboard')
         
-    context = {'form': form, 'reports': reports, 'filter': report_filter}
+    context = {'form': form, 'reports': reports, 
+               'filter': report_filter, 'reports_count': pending_reports_count}
 
     if request.htmx:
         return render(request, 'reports/partials/reports-list.html', context)
