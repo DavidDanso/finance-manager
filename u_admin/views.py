@@ -34,7 +34,7 @@ def admin_dashboard(request):
     # get total amounts based on approved reports
     total_amount = Report.objects.filter(status='approve').aggregate(Sum('payment'))['payment__sum']
 
-
+    #
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
         if form.is_valid():

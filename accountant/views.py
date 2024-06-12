@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from reports.forms import ReportCreationForm
+from reports.forms import ReportCreationForm, ReportEditForm
 from django.http import HttpResponse
 from openpyxl import Workbook
 from reports.models import Report
@@ -14,6 +14,7 @@ from accounts.models import Profile
 from openpyxl import load_workbook
 
 
+@login_required(login_url='login')
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -62,6 +63,7 @@ def create_report(request):
     report_filter = ReportFilter(request.GET, queryset=reports)
     reports = report_filter.qs
 
+    # create reports
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
         if form.is_valid():
@@ -76,6 +78,26 @@ def create_report(request):
         return render(request, 'reports/partials/reports-list.html', context)
 
     return render(request, 'accountant/reports.html', context)
+
+
+# edit_report view
+@login_required(login_url='login')
+def edit_report(request, pk):
+    user = request.user.profile
+    report = user.report_set.get(id=pk)
+    form = ReportEditForm(instance=report)
+
+    #
+    if request.method == "POST":
+        form = ReportEditForm(request.POST, instance=report)
+        if form.is_valid():
+            messages.success(request, 'Report successfully updated! ✅')
+            report.save()
+        else:
+            messages.error(request, 'Report update failed. 🚫')
+        
+    context = {'form': form, 'report': report}
+    return render(request, 'edit-reports.html', context)
 
 
 # download_report view
