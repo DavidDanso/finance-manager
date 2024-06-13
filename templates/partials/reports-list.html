@@ -45,8 +45,10 @@
                     ><ion-icon name="download-outline"></ion-icon
                   ></a>
                 </td>
-                {% if report.status in 'reject, approve, pending' %}
-                <td class="icon-cell"></td>
+                {% if report.status in list or report.account_owner != user %}
+                <td class="icon-cell">
+                  <ion-icon name="lock-closed-outline"></ion-icon>
+                </td>
                 {% else %}
                 <td>
                   <a href="{% url 'edit-report' report.id %}">

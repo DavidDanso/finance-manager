@@ -352,7 +352,7 @@ a:hover {
 
 /* no-edit */
 .icon-cell ion-icon {
-  display: none;
+  cursor: default;
 }
 /****************************************** Add-report-modal ************************************/
 #create-report-offcanvas .offcanvas {

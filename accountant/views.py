@@ -63,6 +63,9 @@ def create_report(request):
     report_filter = ReportFilter(request.GET, queryset=reports)
     reports = report_filter.qs
 
+    #
+    status_list = ['reject', 'approve', 'pending']
+
     # create reports
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
@@ -72,7 +75,7 @@ def create_report(request):
             report.save()
             return redirect('reports')
         
-    context = {'form': form, 'reports': reports, 'filter': report_filter}
+    context = {'form': form, 'reports': reports, 'filter': report_filter, 'list': status_list, 'user': user}
 
     if request.htmx:
         return render(request, 'partials/reports-list.html', context)
