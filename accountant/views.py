@@ -75,7 +75,7 @@ def create_report(request):
     context = {'form': form, 'reports': reports, 'filter': report_filter}
 
     if request.htmx:
-        return render(request, 'reports/partials/reports-list.html', context)
+        return render(request, 'partials/reports-list.html', context)
 
     return render(request, 'accountant/reports.html', context)
 

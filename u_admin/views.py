@@ -3,13 +3,14 @@ from accounts.models import Profile
 from .forms import UserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from reports.forms import ReportCreationForm
+from reports.forms import ReportCreationForm, ReportEditForm
 from django.http import HttpResponse
 from openpyxl import Workbook
 from django.db.models import Sum
 from reports.models import Report
 from openpyxl.utils import get_column_letter
 from io import BytesIO
+from django.contrib import messages
 from reports.filters import ReportFilter
 from .forms import ProfileUpdateForm, UserUpdateForm
 
@@ -50,9 +51,28 @@ def admin_dashboard(request):
                'total_amount': total_amount}
 
     if request.htmx:
-        return render(request, 'reports/partials/reports-list.html', context)
+        return render(request, 'partials/base-reports-list.html', context)
     
     return render(request, 'u_admin/admin_dashboard.html', context)
+
+
+# edit_report view
+@login_required
+def edit_report(request, pk):
+    report = Report.objects.get(id=pk)
+    form = ReportEditForm(instance=report)
+
+    #
+    if request.method == "POST":
+        form = ReportEditForm(request.POST, instance=report)
+        if form.is_valid():
+            messages.success(request, 'Report successfully updated! ✅')
+            report.save()
+        else:
+            messages.error(request, 'Report update failed. 🚫')
+        
+    context = {'form': form, 'report': report}
+    return render(request, 'edit-reports.html', context)
 
 
 # user_management view

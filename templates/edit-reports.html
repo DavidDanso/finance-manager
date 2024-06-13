@@ -72,6 +72,17 @@
         <div id="hero">
           <div class="container-fluid">
             <div class="hero-intro">
+              <!--  -->
+              {% if request.user.role == 'admin' %}
+              <a href="{% url 'dashboard' %}">
+                <img
+                  src="{% static '/images/left.png' %}"
+                  class="img-fluid"
+                  id="return_back"
+                  alt="return_back-img"
+                />
+              </a>
+              {% else %}
               <a href="{% url 'reports' %}">
                 <img
                   src="{% static '/images/left.png' %}"
@@ -80,6 +91,7 @@
                   alt="return_back-img"
                 />
               </a>
+              {% endif %}
               <!--  -->
               <div class="card d-flex mx-auto" id="edit_card">
                 <div class="card-body">

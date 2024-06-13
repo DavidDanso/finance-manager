@@ -39,22 +39,17 @@
                   {% endif %}
                 </td>
                 <td>{{report.sub_category}}</td>
-                <td>{{report.payment|floatformat:2|intcomma}}</td>
+                <td>${{report.payment|floatformat:2|intcomma}}</td>
                 <td>
                   <a href="{% url 'download_report' report.id %}"
                     ><ion-icon name="download-outline"></ion-icon
                   ></a>
                 </td>
-                {% if report.status == 'reject' or report.status == 'approve' %}
-                <td class="icon-cell"></td>
-                {% else %}
                 <td>
-                  <a href="#">
+                  <a href="{% url 'report-edit' report.id %}">
                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                   </a>
                 </td>
-                <!--  -->
-                {% endif %}
               </tr>
               {% endfor %}
             </tbody>

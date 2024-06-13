@@ -1,5 +1,10 @@
 {% load static %}
 <!--  -->
-{% load humanize %}
+{% load humanize %} {% if request.user.role == 'admin' %}
 <!--  -->
-{% include 'partials/reports-list.html' %}
+{% include 'partials/base-reports-list.html' %}
+<!--  -->
+{% else %}
+<!--  -->
+{% include 'partials/reports-list.html' %} {% endif %}
+<!--  -->
