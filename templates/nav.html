@@ -25,6 +25,7 @@
       <span></span><span></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- admin nav -->
       {% if request.user.role == 'admin' %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 left--links">
         <li class="nav-item">
@@ -40,10 +41,15 @@
           >
         </li>
       </ul>
+      <!-- accountant nav -->
       {% elif request.user.role == 'accountant' %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 left--links">
         <li class="nav-item">
-          <a class="nav-link" href="#">Accountant Dashboard</a>
+          <a
+            class="nav-link {% active_link 'a_dashboard' %}"
+            href="{% url 'a_dashboard' %}"
+            >Accountant Dashboard</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Reports for Correction</a>

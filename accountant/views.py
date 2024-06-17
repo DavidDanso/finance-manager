@@ -14,6 +14,12 @@ from accounts.models import Profile
 from openpyxl import load_workbook
 
 
+# dashboard view
+def accountant_dashboard(request):
+    return render(request, 'accountant/a_dashboard.html')
+
+
+# upload_file view
 @login_required(login_url='login')
 def upload_file(request):
     if request.method == 'POST':
