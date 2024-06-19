@@ -17,17 +17,19 @@
       name="keywords"
       content="report manager, Excel reports, reporting software"
     />
-
     <meta name="author" content="the_desiinger" />
     <link rel="icon" href="{% static '/images/favicon.svg' %}" />
-    <title>Finance-Manager | dashboard Page</title>
+    <title>Finance-Manager | Dashboard Page</title>
 
     <!-- Preload CSS -->
-    <link href="{% static '/css/normalize.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/normalize.css' %}" />
     <link rel="preload" as="style" href="{% static '/css/a_dashboard.css' %}" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static '/css/a_dashboard.css' %}" />
+
+    <!-- Flowbite CSS -->
 
     <script>
       document.documentElement.className = "js";
@@ -150,7 +152,19 @@
         <!-- End hero -->
 
         <!--=========================================== Reports-Section ===============================-->
-
+        <div id="reports">
+          <div class="container">
+            <div class="reports-intro">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <!-- end chart-col -->
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- end reports-intro -->
+          </div>
+          <!-- end container -->
+        </div>
         <!-- End reports -->
       </div>
       <!-- End page--layout -->
@@ -163,6 +177,9 @@
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
       crossorigin="anonymous"
     ></script>
+    <!-- flowbite cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom Links -->
     <script
       type="module"
@@ -174,6 +191,136 @@
     ></script>
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
-    <script src="{% static '/js/a_dashboard.js' %}"></script>
+
+    <script>
+      const getChartOptions = () => {
+        return {
+          series: [35.1, 23.5, 2.4, 5.4],
+          colors: ["#5b616b8f", "#0568fd", "#6ece9d", "#e34432"],
+          chart: {
+            height: 320,
+            width: "100%",
+            type: "donut",
+          },
+          stroke: {
+            colors: ["transparent"],
+            lineCap: "",
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  show: true,
+                  name: {
+                    show: true,
+                    fontFamily: "Inter, sans-serif",
+                    offsetY: 20,
+                  },
+                  total: {
+                    showAlways: true,
+                    show: true,
+                    label: "Unique visitors",
+                    fontFamily: "Inter, sans-serif",
+                    formatter: function (w) {
+                      const sum = w.globals.seriesTotals.reduce((a, b) => {
+                        return a + b;
+                      }, 0);
+                      return "$" + sum + "k";
+                    },
+                  },
+                  value: {
+                    show: true,
+                    fontFamily: "Inter, sans-serif",
+                    offsetY: -20,
+                    formatter: function (value) {
+                      return value + "k";
+                    },
+                  },
+                },
+                size: "80%",
+              },
+            },
+          },
+          grid: {
+            padding: {
+              top: -2,
+            },
+          },
+          labels: ["Pending", "Correction", "Approved", "Rejected"],
+          dataLabels: {
+            enabled: false,
+          },
+          legend: {
+            position: "bottom",
+            fontFamily: "Inter, sans-serif",
+          },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value + "k";
+              },
+            },
+          },
+          xaxis: {
+            labels: {
+              formatter: function (value) {
+                return value + "k";
+              },
+            },
+            axisTicks: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+          },
+        };
+      };
+
+      if (
+        document.getElementById("donut-chart") &&
+        typeof ApexCharts !== "undefined"
+      ) {
+        const chart = new ApexCharts(
+          document.getElementById("donut-chart"),
+          getChartOptions()
+        );
+        chart.render();
+
+        // Get all the checkboxes by their class name
+        const checkboxes = document.querySelectorAll(
+          '#devices input[type="checkbox"]'
+        );
+
+        // Function to handle the checkbox change event
+        function handleCheckboxChange(event, chart) {
+          const checkbox = event.target;
+          if (checkbox.checked) {
+            switch (checkbox.value) {
+              case "desktop":
+                chart.updateSeries([15.1, 22.5, 4.4, 8.4]);
+                break;
+              case "tablet":
+                chart.updateSeries([25.1, 26.5, 1.4, 3.4]);
+                break;
+              case "mobile":
+                chart.updateSeries([45.1, 27.5, 8.4, 2.4]);
+                break;
+              default:
+                chart.updateSeries([55.1, 28.5, 1.4, 5.4]);
+            }
+          } else {
+            chart.updateSeries([35.1, 23.5, 2.4, 5.4]);
+          }
+        }
+
+        // Attach the event listener to each checkbox
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", (event) =>
+            handleCheckboxChange(event, chart)
+          );
+        });
+      }
+    </script>
   </body>
 </html>

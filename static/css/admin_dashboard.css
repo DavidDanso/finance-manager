@@ -241,7 +241,7 @@ a:hover {
 #dashboard_card ion-icon {
   vertical-align: middle;
   font-size: 1.6rem;
-  color: #8d75e6;
+  color: #5b616b8f;
 }
 #dashboard_card #payment ion-icon {
   color: #027a48;
@@ -394,12 +394,12 @@ input[type="date"] {
 }
 .desktop-table-intro .approve {
   background: #d9ffe0;
-  color: #027a48;
+  color: #027a48ae;
   font-size: 1.6vh;
 }
 .desktop-table-intro .reject {
   background: #ffe2d5;
-  color: #ff4539;
+  color: #ff4639;
   font-size: 1.6vh;
 }
 
