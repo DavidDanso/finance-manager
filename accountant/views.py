@@ -16,7 +16,10 @@ from openpyxl import load_workbook
 
 # dashboard view
 def accountant_dashboard(request):
-    return render(request, 'accountant/a_dashboard.html')
+    user = request.user.profile
+    reports = Report.objects.select_related('account_owner').filter(account_owner=user)
+    context = {'reports': reports}
+    return render(request, 'accountant/a_dashboard.html', context)
 
 
 # upload_file view

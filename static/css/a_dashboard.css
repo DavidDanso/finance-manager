@@ -198,30 +198,6 @@ a:hover {
   margin-bottom: 2%;
 }
 
-/* add report */
-#all_reports ion-icon {
-  vertical-align: middle;
-  font-size: 1.3rem;
-  margin-right: -2%;
-}
-#all_reports {
-  color: var(--text-color);
-  letter-spacing: 1px;
-  font-family: var(--text-font);
-  font-size: 1.2rem;
-  cursor: pointer;
-  line-height: 1.4;
-  background-color: #3e6567;
-  transition: all 0.5s ease-in-out;
-  margin-top: 3%;
-  margin-bottom: -2%;
-}
-#all_reports:hover {
-  color: var(--text-color);
-  background: #3e6567c4;
-  transition: all 0.5s ease-in-out;
-}
-
 /* dashboard card */
 #dashboard_card #stats {
   background-color: #c1c7d157;
@@ -263,113 +239,134 @@ a:hover {
   margin-top: 3%;
 }
 
-/****************************************** reports-section ************************************/
-#reports {
-  margin-top: -1%;
+/****************************************** correction-Section ************************************/
+#correction {
+  margin-top: 2%;
 }
-.reports-intro {
+.correction-intro {
   margin: 3%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--text-color);
+  padding: 4px;
+  border-radius: 65px;
+  padding-right: 1%;
+  padding-left: 1%;
 }
-.reports-intro .card {
-  width: 85%;
-  background-color: transparent;
-  border: 1px solid #7b8fa199;
-}
-.reports-intro p {
-  font-size: 2.2vh;
-  font-family: var(--header-font);
-  color: var(--text-color);
-  letter-spacing: 1px;
-}
-.reports-intro p small {
-  font-family: var(--text-font);
-  color: var(--text-color);
-}
-.reports-intro label {
-  color: var(--text-color);
-  letter-spacing: 1px;
-  font-family: var(--text-font);
-  font-size: 1.1rem;
-  margin-bottom: 2%;
-  margin-left: 13%;
-}
-.reports-intro input {
-  color: var(--text-color);
-  letter-spacing: 1px;
-  font-family: var(--text-font);
-  font-size: 1.1rem;
-  border: 1px solid #7b8fa1;
-  background: transparent;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-  margin-left: 10%;
-}
-.reports-intro select {
-  color: var(--text-color);
-  letter-spacing: 1px;
-  font-family: var(--text-font);
-  font-size: 1.1rem;
-  border: 1px solid #7b8fa1;
-  margin-left: 12%;
-  background: transparent;
-}
-.reports-intro select:focus,
-.reports-intro input:focus {
-  box-shadow: none !important;
-  outline: 0px !important;
-  border: 1px solid #7b8fa199;
-  color: var(--text-color);
-}
-#search-btn {
-  margin-top: 10px;
-}
-#search-btn ion-icon {
-  font-size: 2.6rem;
-  margin-left: 4%;
-  transition: all 0.5s ease-in-out;
+#h2-text ion-icon {
+  font-size: 4.5vh;
   vertical-align: middle;
-  color: var(--text-color);
+  margin-top: 12%;
+  color: #686d76;
 }
-#search-btn ion-icon:hover {
-  color: #ffffff9a;
+#h2-icon ion-icon {
+  font-size: 3vh;
+  vertical-align: middle;
+  color: #686d76;
+}
+.correction-intro h2 {
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+#move_txt {
+  position: absolute;
+  margin-left: 1%;
+  font-family: var(--header-font);
+}
+#move_txt small {
+  font-family: var(--text-font);
+}
+
+/* correction-card */
+#correction-card {
+  margin-top: 3%;
+}
+#correction-card h6 {
+  font-size: 4.5vh;
+  font-family: var(--header-font);
+  color: #686d76;
+  letter-spacing: 1px;
+}
+#correction-card small {
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+}
+#correction-card h3 {
+  font-size: 2.2vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+#correction-card h6 ion-icon,
+#correction-card h3 ion-icon {
+  vertical-align: middle;
+}
+#correction-card .correction {
+  background: #eadff8;
+  color: #8d75e6;
+  font-size: 1.6vh;
+  float: right;
+}
+
+/* corrections btns */
+#corrections ion-icon {
+  vertical-align: middle;
+  font-size: 1.3rem;
+  margin-right: -2%;
+}
+#corrections {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1.4;
+  background-color: #3e6567;
+  transition: all 0.5s ease-in-out;
+  margin-top: 3%;
+  margin-bottom: -2%;
+}
+#corrections:hover {
+  color: var(--text-color);
+  background: #3e6567c4;
   transition: all 0.5s ease-in-out;
 }
-#search-btn:focus {
-  box-shadow: none !important;
-  outline: 0px !important;
-  border: transparent;
-}
 
-/* Change the color of the calendar icon in WebKit-based browsers to white */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(100%) brightness(200%);
-  cursor: pointer;
+#all_corrections {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  margin-top: 5%;
+  transition: all 0.5s ease-in-out;
 }
-
-/* Additional styling for the date input */
-input[type="date"] {
-  padding: 5px;
-  font-size: 16px;
+#all_corrections span {
+  border-bottom: 1px solid var(--main-color);
+}
+#all_corrections:hover {
+  color: #171b2384;
+  transition: all 0.5s ease-in-out;
 }
 
 /****************************************** Desktop-Table-Section ************************************/
-#desktop-table {
-  margin-top: 1%;
+#reports-table {
+  margin-top: 3%;
 }
-.desktop-table-intro {
-  margin: 3%;
-}
-.desktop-table-intro .card {
+#reports-table .card {
   border: 1px solid var(--text-color);
   background: #f7f7f7f9;
 }
-.desktop-table-intro table {
+#reports-table table {
   margin-bottom: 0px;
 }
-.desktop-table-intro th {
+#reports-table th {
   background-color: transparent;
 }
-.desktop-table-intro td {
+#reports-table td {
   font-size: 1.9vh;
   font-family: var(--text-font);
   color: var(--main-color);
@@ -377,29 +374,29 @@ input[type="date"] {
   padding: 9px;
   text-transform: lowercase;
 }
-.desktop-table-intro ion-icon {
+#reports-table ion-icon {
   font-size: 1.5rem;
   color: #333333;
   cursor: pointer;
 }
 
 /* status */
-.desktop-table-intro .pending {
+#reports-table .pending {
   background: #c1c7d1ca;
   color: #5b616bca;
   font-size: 1.6vh;
 }
-.desktop-table-intro .correction {
+#reports-table .correction {
   background: #eadff8;
   color: #8d75e6;
   font-size: 1.6vh;
 }
-.desktop-table-intro .approve {
+#reports-table .approve {
   background: #d9ffe0;
   color: #027a48;
   font-size: 1.6vh;
 }
-.desktop-table-intro .reject {
+#reports-table .reject {
   background: #ffe2d5;
   color: #ff4539;
   font-size: 1.6vh;
