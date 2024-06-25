@@ -13,6 +13,7 @@ from reports.forms import UploadFileForm
 from accounts.models import Profile
 from openpyxl import load_workbook
 from django.db.models import Count, Q
+from datetime import datetime
 
 
 # dashboard view
@@ -26,19 +27,26 @@ def accountant_dashboard(request):
     status_counts = Report.objects.filter(account_owner=user).aggregate(
         approve_count=Count('id', filter=Q(status='approve')),
         reject_count=Count('id', filter=Q(status='reject')),
-        pending_count=Count('id', filter=Q(status='pending'))
+        pending_count=Count('id', filter=Q(status='pending')),
+        correction_count=Count('id', filter=Q(status='correction')),
     )
 
     # Extract the counts from the aggregated result
     approve_count = status_counts['approve_count']
     reject_count = status_counts['reject_count']
     pending_count = status_counts['pending_count']
+    correction_count = status_counts['correction_count']
+
+    # get current date
+    current_date = datetime.now().strftime("%B %d, %Y")
 
     context = {
         'reports': reports,
         'approve_count': approve_count,
         'reject_count': reject_count,
-        'pending_count': pending_count
+        'pending_count': pending_count,
+        'correction_count': correction_count,
+        'current_date': current_date
     }
     
     return render(request, 'accountant/a_dashboard.html', context)
@@ -46,7 +54,15 @@ def accountant_dashboard(request):
 
 # corrections view
 def corrections_page(request):
-    return render(request, 'accountant/corrections.html')
+    user = request.user.profile
+    correction_reports = Report.objects.filter(status='correction', 
+                                          account_owner=user)
+    
+    correction_count = correction_reports.count()
+
+    context = {'correction_reports': correction_reports, 
+               'correction_count': correction_count}
+    return render(request, 'accountant/corrections.html', context)
 
 # upload_file view
 @login_required(login_url='login')

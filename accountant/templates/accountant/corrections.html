@@ -73,7 +73,10 @@
         <div id="hero">
           <div class="container-fluid">
             <div class="hero-intro">
-              <h1>You have <span>6</span> reports returned for correction.</h1>
+              <h1>
+                You have <span>{{correction_count}}</span> reports returned for
+                correction.
+              </h1>
               <p>Review and update pending reports efficiently</p>
             </div>
             <!-- End hero-intro-->
@@ -95,6 +98,7 @@
             <!--  -->
 
             <div class="row">
+              {% for report in correction_reports %}
               <div class="col-md-4" id="correction-card">
                 <div class="card">
                   <div class="card-body">
@@ -107,18 +111,20 @@
                     >
                     <hr />
 
-                    <h3 id="description">support for svg. complet…</h3>
+                    <h3 id="description">
+                      {{report.description|truncatechars:40}}
+                    </h3>
                     <h3 id="main_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      porro quisquam
+                      {{report.main_category|truncatechars:30}}
                     </h3>
                     <h3 id="sub_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      est qui dolorem
+                      {{report.sub_category|truncatechars:30}}
                     </h3>
                     <h3 id="payment">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      $23,000.00
+                      ${{ report.payment|floatformat:2|intcomma }}
                     </h3>
 
                     <a href="#" id="corrections" class="btn">
@@ -133,6 +139,7 @@
                 </div>
                 <!-- end card -->
               </div>
+              {% endfor %}
               <!-- end correction-card -->
             </div>
             <!-- end row -->
