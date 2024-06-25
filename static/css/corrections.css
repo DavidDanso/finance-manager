@@ -310,19 +310,19 @@ a:hover {
   transition: all 0.5s ease-in-out;
 }
 
-#all_corrections {
+#mark_done {
   color: var(--main-color);
   letter-spacing: 1px;
   font-family: var(--text-font);
   font-size: 1.2rem;
-  margin-top: 3%;
+  margin-top: -8%;
   transition: all 0.5s ease-in-out;
   float: right;
 }
-#all_corrections span {
+#mark_done span {
   border-bottom: 1px solid var(--main-color);
 }
-#all_corrections:hover {
+#mark_done:hover {
   color: #171b2384;
   transition: all 0.5s ease-in-out;
 }

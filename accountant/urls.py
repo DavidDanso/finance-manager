@@ -8,4 +8,5 @@ urlpatterns = [
     path('upload/', views.upload_file, name='upload_file'),
     path('edit-report/<str:pk>', views.edit_report, name='edit-report'),
     path('corrections', views.corrections_page, name='corrections'),
+    path('correction_done/<str:report_id>', views.correction_status, name='correction_done'),
 ]

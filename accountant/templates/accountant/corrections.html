@@ -131,9 +131,15 @@
                       <ion-icon name="reader-outline"></ion-icon> make
                       correction
                     </a>
-                    <a href="#" id="all_corrections" class="btn">
-                      <span>mark as done</span>
-                    </a>
+                    <form
+                      action="{% url 'correction_done' report.id %}"
+                      method="post"
+                    >
+                      {% csrf_token %}
+                      <button type="submit" id="mark_done" class="btn">
+                        <span>mark as done</span>
+                      </button>
+                    </form>
                   </div>
                   <!-- end card-body -->
                 </div>

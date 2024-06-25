@@ -52,17 +52,45 @@ def accountant_dashboard(request):
     return render(request, 'accountant/a_dashboard.html', context)
 
 
+
+
 # corrections view
 def corrections_page(request):
+    # Get the profile of the logged-in user
     user = request.user.profile
-    correction_reports = Report.objects.filter(status='correction', 
-                                          account_owner=user)
-    
+
+    # Fetch reports with the status 'correction' for the logged-in user
+    correction_reports = Report.objects.filter(status='correction', account_owner=user)
+
+    # Count the number of correction reports
     correction_count = correction_reports.count()
 
-    context = {'correction_reports': correction_reports, 
-               'correction_count': correction_count}
+    # Prepare the context for rendering the template
+    context = {
+        'correction_reports': correction_reports,  # List of correction reports
+        'correction_count': correction_count,      # Total count of correction reports
+    }
+
+    # Render the 'corrections.html' template with the context
     return render(request, 'accountant/corrections.html', context)
+
+
+
+
+# Ensure the request is a POST request
+def correction_status(request, report_id):
+    user = request.user.profile
+
+    # Fetch the report and update its status
+    if request.method == 'POST':
+        report = get_object_or_404(Report, id=report_id, account_owner=user)
+        report.status = 'pending'
+        report.save()
+
+        return redirect('corrections')
+
+
+
 
 # upload_file view
 @login_required(login_url='login')
@@ -101,6 +129,8 @@ def upload_file(request):
     return render(request, 'accountant/upload-reports.html', {'form': form})
 
 
+
+
 # create_report view
 @login_required(login_url='login')
 def create_report(request):
@@ -134,6 +164,8 @@ def create_report(request):
     return render(request, 'accountant/reports.html', context)
 
 
+
+
 # edit_report view
 @login_required(login_url='login')
 def edit_report(request, pk):
@@ -152,6 +184,8 @@ def edit_report(request, pk):
         
     context = {'form': form, 'report': report}
     return render(request, 'edit-reports.html', context)
+
+
 
 
 # download_report view
