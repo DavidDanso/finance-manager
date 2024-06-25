@@ -15,7 +15,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.role == 'accountant':
-                return redirect('reports') 
+                return redirect('a_dashboard') 
             elif user.role == 'admin':
                 return redirect('dashboard') 
             elif user.role == 'manager':

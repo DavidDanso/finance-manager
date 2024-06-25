@@ -19,15 +19,15 @@
     />
     <meta name="author" content="the_desiinger" />
     <link rel="icon" href="{% static '/images/favicon.svg' %}" />
-    <title>Finance-Manager | Dashboard Page</title>
+    <title>Finance-Manager | Corrections Page</title>
 
     <!-- Preload CSS -->
     <link rel="preload" as="style" href="{% static '/css/normalize.css' %}" />
-    <link rel="preload" as="style" href="{% static '/css/a_dashboard.css' %}" />
+    <link rel="preload" as="style" href="{% static '/css/corrections.css' %}" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static '/css/a_dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/corrections.css' %}" />
 
     <!-- Flowbite CSS -->
 
@@ -73,65 +73,8 @@
         <div id="hero">
           <div class="container-fluid">
             <div class="hero-intro">
-              <h1>Welcome back, {{request.user.profile.username}}</h1>
-
-              <!-- dashboard cards -->
-              <div class="row" id="dashboard_card">
-                <div class="col-md-4 align-self-center">
-                  <div class="card" id="main_card">
-                    <div class="card-body">
-                      <h6>
-                        <ion-icon name="thumbs-up-outline"></ion-icon>
-                        approved reports - <span>6</span>
-                      </h6>
-                    </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6 id="rejected_">
-                        <ion-icon name="close-circle-outline"></ion-icon>
-                        rejected reports
-                      </h6>
-                      <div id="stats">
-                        <center>
-                          <small>7</small>
-                        </center>
-                      </div>
-                      <!-- end stats -->
-                    </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6 id="pending_">
-                        <ion-icon name="timer-outline"></ion-icon>
-                        pending reports
-                      </h6>
-                      <div id="stats">
-                        <center>
-                          <small>10</small>
-                        </center>
-                      </div>
-                      <!-- end stats -->
-                    </div>
-                    <!-- end card-body -->
-                  </div>
-                  <!-- end card -->
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end dashboard cards -->
+              <h1>You have <span>6</span> reports returned for correction.</h1>
+              <p>Review and update pending reports efficiently</p>
             </div>
             <!-- End hero-intro-->
           </div>
@@ -142,22 +85,6 @@
         <!--=========================================== correction-Section ===============================-->
         <div id="correction">
           <div class="container">
-            <div class="correction-intro">
-              <h2 id="h2-text">
-                <ion-icon name="sync-outline"></ion-icon>
-                <span id="move_txt">
-                  latest reports for correction <br />
-                  <small>Today - May 12, 2024</small>
-                </span>
-              </h2>
-
-              <h2 class="align-self-center" id="h2-icon">
-                <ion-icon name="reader-outline"></ion-icon>
-                you got 5 reports for correction
-              </h2>
-            </div>
-            <!-- end correction-intro -->
-
             <!--  -->
             <img
               src="{% static 'images/line.png'%}"
@@ -182,12 +109,16 @@
 
                     <h3 id="description">support for svg. complet…</h3>
                     <h3 id="main_cat">
-                      <ion-icon name="radio-button-on-outline"></ion-icon>
+                      <ion-icon name="checkbox-outline"></ion-icon>
                       porro quisquam
                     </h3>
                     <h3 id="sub_cat">
-                      <ion-icon name="radio-button-on-outline"></ion-icon>
+                      <ion-icon name="checkbox-outline"></ion-icon>
                       est qui dolorem
+                    </h3>
+                    <h3 id="payment">
+                      <ion-icon name="checkbox-outline"></ion-icon>
+                      $23,000.00
                     </h3>
 
                     <a href="#" id="corrections" class="btn">
@@ -195,7 +126,7 @@
                       correction
                     </a>
                     <a href="#" id="all_corrections" class="btn">
-                      <span>view all corrections</span>
+                      <span>mark as done</span>
                     </a>
                   </div>
                   <!-- end card-body -->
@@ -203,63 +134,6 @@
                 <!-- end card -->
               </div>
               <!-- end correction-card -->
-
-              <div class="col-md-8" id="reports-table">
-                <div class="card">
-                  <div class="card-body">
-                    <table class="table table-hover" id="invoice_table">
-                      <thead>
-                        <tr>
-                          <th scope="col">username</th>
-                          <th scope="col">main category</th>
-                          <th scope="col">status</th>
-                          <th scope="col">sub category</th>
-                          <th scope="col">payment</th>
-                          <th scope="col">download</th>
-                          <th scope="col">edit</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for report in reports %}
-                        <tr>
-                          <td>{{report.account_owner.username}}</td>
-                          <td>{{report.main_category|truncatechars:10}}</td>
-                          <td>
-                            {% if report.status == 'pending' %}
-                            <span class="badge pending">pending</span>
-                            {% elif report.status == 'reject' %}
-                            <span class="badge reject">reject</span>
-                            {% elif report.status == 'correction' %}
-                            <span class="badge correction">correction</span>
-                            {% else %}
-                            <span class="badge approve">approve</span>
-                            {% endif %}
-                          </td>
-                          <td>{{report.sub_category|truncatechars:10}}</td>
-                          <td>${{report.payment|floatformat:2|intcomma}}</td>
-                          <td>
-                            <a href="{% url 'download_report' report.id %}"
-                              ><ion-icon name="download-outline"></ion-icon
-                            ></a>
-                          </td>
-                          <td>
-                            <a href="{% url 'edit-report' report.id %}">
-                              <ion-icon
-                                name="ellipsis-horizontal-outline"
-                              ></ion-icon>
-                            </a>
-                          </td>
-                        </tr>
-                        {% endfor %}
-                      </tbody>
-                    </table>
-                    <!-- end table -->
-                  </div>
-                  <!-- end card-body -->
-                </div>
-                <!-- end card -->
-              </div>
-              <!-- end reports-table -->
             </div>
             <!-- end row -->
           </div>

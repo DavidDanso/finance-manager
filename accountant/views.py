@@ -22,6 +22,10 @@ def accountant_dashboard(request):
     return render(request, 'accountant/a_dashboard.html', context)
 
 
+# corrections view
+def corrections_page(request):
+    return render(request, 'accountant/corrections.html')
+
 # upload_file view
 @login_required(login_url='login')
 def upload_file(request):
