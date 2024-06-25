@@ -26,7 +26,7 @@ class Report(models.Model):
 
     # display new invoice first
     class Meta:
-        ordering = ['-created_time_stamp']
+        ordering = ['-updated_time_stamp']
     
     
 

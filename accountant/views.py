@@ -12,13 +12,35 @@ import pandas as pd
 from reports.forms import UploadFileForm
 from accounts.models import Profile
 from openpyxl import load_workbook
+from django.db.models import Count, Q
 
 
 # dashboard view
 def accountant_dashboard(request):
     user = request.user.profile
+
+    # Select related to avoid N-1 problem
     reports = Report.objects.select_related('account_owner').filter(account_owner=user)
-    context = {'reports': reports}
+
+    # Aggregate counts in a single query
+    status_counts = Report.objects.filter(account_owner=user).aggregate(
+        approve_count=Count('id', filter=Q(status='approve')),
+        reject_count=Count('id', filter=Q(status='reject')),
+        pending_count=Count('id', filter=Q(status='pending'))
+    )
+
+    # Extract the counts from the aggregated result
+    approve_count = status_counts['approve_count']
+    reject_count = status_counts['reject_count']
+    pending_count = status_counts['pending_count']
+
+    context = {
+        'reports': reports,
+        'approve_count': approve_count,
+        'reject_count': reject_count,
+        'pending_count': pending_count
+    }
+    
     return render(request, 'accountant/a_dashboard.html', context)
 
 
