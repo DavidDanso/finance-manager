@@ -69,6 +69,7 @@
         <div class="content content--full content--alternate"></div>
         <!-- End content -->
 
+        {% if correction_reports %}
         <!--=========================================== Hero-Text ===============================-->
         <div id="hero">
           <div class="container-fluid">
@@ -153,6 +154,23 @@
           <!-- end container -->
         </div>
         <!-- End correction -->
+        {% else %}
+        <!--  -->
+        <div id="no-data">
+          <img
+            src="{% static 'images/correction-img.svg' %}"
+            class="img-fluid d-flex mx-auto"
+            id="correction_img"
+            alt="correction_img"
+          />
+          <h2>Correction Reports</h2>
+          <p>
+            No correction report is available at this time. Please check back
+            later for updates.
+          </p>
+        </div>
+        <!--  -->
+        {% endif %}
       </div>
       <!-- End page--layout -->
     </main>

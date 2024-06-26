@@ -17,6 +17,7 @@ from datetime import datetime
 
 
 # dashboard view
+@login_required(login_url='login')
 def accountant_dashboard(request):
     user = request.user.profile
 
@@ -55,6 +56,7 @@ def accountant_dashboard(request):
 
 
 # corrections view
+@login_required(login_url='login')
 def corrections_page(request):
     # Get the profile of the logged-in user
     user = request.user.profile
