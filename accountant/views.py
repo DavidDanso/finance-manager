@@ -80,15 +80,14 @@ def corrections_page(request):
 
 
 # Ensure the request is a POST request
-def correction_status(request, report_id):
+def change_correction_status(request, report_id):
     user = request.user.profile
 
-    # Fetch the report and update its status
-    if request.method == 'POST':
+    if request.method == "POST":
         report = get_object_or_404(Report, id=report_id, account_owner=user)
         report.status = 'pending'
         report.save()
-
+        
         return redirect('corrections')
 
 

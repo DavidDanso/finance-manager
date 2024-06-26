@@ -29,7 +29,8 @@
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static '/css/corrections.css' %}" />
 
-    <!-- Flowbite CSS -->
+    <!--  -->
+    <!--  -->
 
     <script>
       document.documentElement.className = "js";
@@ -75,8 +76,8 @@
           <div class="container-fluid">
             <div class="hero-intro">
               <h1>
-                You have <span>{{correction_count}}</span> reports returned for
-                correction.
+                You have <span>{{correction_count}}</span>
+                report{{ correction_count|pluralize }} returned for correction.
               </h1>
               <p>Review and update pending reports efficiently</p>
             </div>
@@ -127,20 +128,14 @@
                       <ion-icon name="checkbox-outline"></ion-icon>
                       ${{ report.payment|floatformat:2|intcomma }}
                     </h3>
-
-                    <a href="#" id="corrections" class="btn">
-                      <ion-icon name="reader-outline"></ion-icon> make
-                      correction
-                    </a>
-                    <form
-                      action="{% url 'correction_done' report.id %}"
-                      method="post"
-                    >
-                      {% csrf_token %}
-                      <button type="submit" id="mark_done" class="btn">
-                        <span>mark as done</span>
-                      </button>
-                    </form>
+                    <!-- correction-btn -->
+                    <div class="d-grid gap-2">
+                      <a href="#" id="correction_btn" class="btn">
+                        <ion-icon name="reader-outline"></ion-icon> make
+                        correction
+                      </a>
+                    </div>
+                    <!-- end correction-btn -->
                   </div>
                   <!-- end card-body -->
                 </div>
