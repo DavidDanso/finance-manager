@@ -22,10 +22,14 @@ def accountant_dashboard(request):
     user = request.user.profile
 
     # Fetch all reports for the user in a single query using select_related
-    reports = Report.objects.select_related('account_owner').filter(account_owner=user)
+    all_reports = Report.objects.select_related('account_owner').filter(account_owner=user)
+
+    # Fetch reports related to the user, excluding those with 'correction' status
+    other_reports = [report for report in all_reports if report.status != 'correction']
 
     # Get the latest correction report from the already fetched reports
-    correction = next((report for report in reports if report.status == 'correction'), None)
+    correction = next((report for report in all_reports if report.status == 'correction'), None)
+
 
     # Aggregate counts in a single query
     status_counts = Report.objects.filter(account_owner=user).aggregate(
@@ -45,7 +49,7 @@ def accountant_dashboard(request):
     current_date = datetime.now().strftime("%B %d, %Y")
 
     context = {
-        'reports': reports,
+        'reports': other_reports,
         'approve_count': approve_count,
         'reject_count': reject_count,
         'pending_count': pending_count,
