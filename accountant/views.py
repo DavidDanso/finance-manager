@@ -21,8 +21,11 @@ from datetime import datetime
 def accountant_dashboard(request):
     user = request.user.profile
 
-    # Select related to avoid N-1 problem
+    # Fetch all reports for the user in a single query using select_related
     reports = Report.objects.select_related('account_owner').filter(account_owner=user)
+
+    # Get the latest correction report from the already fetched reports
+    correction = next((report for report in reports if report.status == 'correction'), None)
 
     # Aggregate counts in a single query
     status_counts = Report.objects.filter(account_owner=user).aggregate(
@@ -47,7 +50,8 @@ def accountant_dashboard(request):
         'reject_count': reject_count,
         'pending_count': pending_count,
         'correction_count': correction_count,
-        'current_date': current_date
+        'current_date': current_date,
+        'correction': correction
     }
     
     return render(request, 'accountant/a_dashboard.html', context)

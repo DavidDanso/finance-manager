@@ -352,6 +352,19 @@ a:hover {
   transition: all 0.5s ease-in-out;
 }
 
+/* no-correction-data  */
+#correction_img {
+  width: 8%;
+  margin-top: 2%;
+}
+#correction-card h2 {
+  font-size: 2.2vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 1%;
+}
 /****************************************** Desktop-Table-Section ************************************/
 #reports-table {
   margin-top: 3%;

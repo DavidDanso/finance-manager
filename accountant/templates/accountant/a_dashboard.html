@@ -147,7 +147,7 @@
               <h2 id="h2-text">
                 <ion-icon name="sync-outline"></ion-icon>
                 <span id="move_txt">
-                  latest reports for correction <br />
+                  report for correction <br />
                   <small>Today - {{current_date}}</small>
                 </span>
               </h2>
@@ -174,23 +174,27 @@
               <div class="col-md-4" id="correction-card">
                 <div class="card">
                   <div class="card-body">
+                    {% if correction %}
+                    <!--  -->
                     <h6>
                       <ion-icon name="reader-outline"></ion-icon>
                     </h6>
                     <small
-                      >report data
-                      <span class="badge correction">correction</span></small
+                      >latest report data
+                      <span class="badge correction"
+                        >{{correction.status}}</span
+                      ></small
                     >
                     <hr />
 
-                    <h3 id="description">support for svg. complet…</h3>
+                    <h3 id="description">{{correction.description}}</h3>
                     <h3 id="main_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      porro quisquam
+                      {{correction.main_category}}
                     </h3>
                     <h3 id="sub_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      est qui dolorem
+                      {{correction.sub_category}}
                     </h3>
 
                     <a href="#" id="corrections" class="btn">
@@ -204,6 +208,16 @@
                     >
                       <span>view all corrections</span>
                     </a>
+                    <!--  -->
+                    {% else %}
+                    <img
+                      src="{% static 'images/correction-img.svg' %}"
+                      class="img-fluid d-flex mx-auto"
+                      id="correction_img"
+                      alt="correction_img"
+                    />
+                    <h2>No correction report is available at this time</h2>
+                    {% endif %}
                   </div>
                   <!-- end card-body -->
                 </div>
