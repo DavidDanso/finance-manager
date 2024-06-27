@@ -130,7 +130,11 @@
                     </h3>
                     <!-- correction-btn -->
                     <div class="d-grid gap-2">
-                      <a href="#" id="correction_btn" class="btn">
+                      <a
+                        href="{% url 'edit-report' report.id %}"
+                        id="correction_btn"
+                        class="btn"
+                      >
                         <ion-icon name="reader-outline"></ion-icon> make
                         correction
                       </a>
