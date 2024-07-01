@@ -168,19 +168,10 @@ a:hover {
   line-height: normal;
 }
 
-/* notification */
+/* nav-|| */
 #nav_span {
   margin-left: 12px;
   margin-right: 12px;
-}
-#notification_img {
-  width: 25px;
-  vertical-align: middle;
-}
-#notification_dot {
-  width: 9px;
-  margin-left: -28%;
-  margin-top: -35%;
 }
 
 /****************************************** Hero-Section ************************************/
