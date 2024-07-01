@@ -171,9 +171,19 @@ a:hover {
 }
 
 /*  */
-#delete--btn ion-icon {
+#delete--btn {
   color: #cf1616;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
+  float: right;
+  border: 1px solid #cf1616;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  transition: all 0.5s ease-in-out;
+}
+#delete--btn:hover {
+  color: var(--text-color);
+  background: #cf1616;
+  transition: all 0.5s ease-in-out;
 }
 
 /* delete-user-modal */
@@ -303,15 +313,15 @@ footer p {
 }
 /********************************** Large devices (desktops, 992px and up) *********************************/
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  /* body {
+  body {
     display: none;
-  } */
+  }
 }
 /************************ Extra large devices (large desktops, 1200px and up) ********************************/
 @media (min-width: 1200px) {
   /****** hero-Section ******/
   #user--details-hero {
-    margin-top: 1%;
+    margin-top: 11%;
   }
   .user--details-intro {
     margin: 3%;
@@ -359,9 +369,6 @@ footer p {
   }
   #save--btn {
     font-size: 1.2rem;
-  }
-  #delete--btn ion-icon {
-    font-size: 1.5rem;
   }
 
   /*  */

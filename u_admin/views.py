@@ -148,27 +148,46 @@ def download_report(request, report_id):
     return response
 
 
+
+
+# update user view
 @login_required
 def update_user(request, pk):
+    # Check if the current user is an admin
     if request.user.role != 'admin':
         return redirect('login')
 
+    # Get the user profile, or return 404 if not found
     profile = get_object_or_404(Profile, id=pk)
     user = profile.user
 
     if request.method == 'POST':
+        # Check if the request is for deleting the user
+        if 'delete_user' in request.POST:
+            profile.delete()
+            messages.success(request, 'User deleted successful')
+            return redirect('users')
+
+        # Process the user update forms
         user_form = UserUpdateForm(request.POST, instance=user)
         profile_form = ProfileUpdateForm(request.POST, instance=profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Profile updated successfully')
             return redirect('users')
     else:
+        # Initialize forms with existing user and profile data
         user_form = UserUpdateForm(instance=user)
         profile_form = ProfileUpdateForm(instance=profile)
 
-    return render(request, 'u_admin/edit-user.html', {
+    # Context to be passed to the template
+    context = {
         'user_form': user_form,
         'profile_form': profile_form,
-        'user': user
-    })
+        'user': user,
+        'profile': profile
+    }
+
+    # Render the edit user template
+    return render(request, 'u_admin/edit-user.html', context)

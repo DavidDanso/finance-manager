@@ -144,8 +144,9 @@
                       id="delete--btn"
                       class="btn"
                       data-bs-toggle="modal"
-                      data-bs-target="#deleteAccountModal"
-                    ></a>
+                      data-bs-target="#deleteUserModal"
+                      >delete user</a
+                    >
                     <!--  -->
                     <div id="form_error">{{form.errors}}</div>
                     <!-- end form_error -->
@@ -162,9 +163,9 @@
         </div>
         <!-- End user--details-hero -->
 
-        <!--=========================================== delete-client-Modal--layout ===============================-->
-
-        <!-- End delete-folder-modal-->
+        <!--=========================================== delete-user-Modal--layout ===============================-->
+        {% include 'u_admin/delete-user-modal.html' %}
+        <!-- End delete-user-modal-->
       </div>
       <!-- End page--layout -->
     </main>
