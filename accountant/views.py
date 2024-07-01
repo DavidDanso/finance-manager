@@ -88,15 +88,20 @@ def corrections_page(request):
 
 
 # Ensure the request is a POST request
-def change_correction_status(request, report_id):
+def make_correction(request, report_id):
     user = request.user.profile
+    report = user.report_set.get(id=report_id)
+    form = ReportEditForm(instance=report)
 
     if request.method == "POST":
-        report = get_object_or_404(Report, id=report_id, account_owner=user)
+        form = ReportEditForm(request.POST, instance=report)
+        report = form.save(commit=False)
         report.status = 'pending'
         report.save()
-        
         return redirect('corrections')
+    
+    context = {'form': form, 'report': report}
+    return render(request, 'accountant/report-correction.html', context)
 
 
 

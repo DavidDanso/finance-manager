@@ -51,9 +51,18 @@
                 </td>
                 {% else %}
                 <td>
+                  <!-- Check if the report status is 'correction' -->
+                  {% if report.status == 'correction' %}
+                  <!-- Link to make a correction -->
+                  <a href="{% url 'make-correction' report.id %}">
+                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                  </a>
+                  {% else %}
+                  <!-- Link to edit the report -->
                   <a href="{% url 'edit-report' report.id %}">
                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                   </a>
+                  {% endif %}
                 </td>
                 <!--  -->
                 {% endif %}

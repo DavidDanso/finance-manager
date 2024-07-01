@@ -187,18 +187,20 @@
                     >
                     <hr />
 
-                    <h3 id="description">{{correction.description}}</h3>
+                    <h3 id="description">
+                      {{correction.description|truncatechars:40}}
+                    </h3>
                     <h3 id="main_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      {{correction.main_category}}
+                      {{correction.main_category|truncatechars:30}}
                     </h3>
                     <h3 id="sub_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      {{correction.sub_category}}
+                      {{correction.sub_category|truncatechars:30}}
                     </h3>
 
                     <a
-                      href="{% url 'edit-report' correction.id %}"
+                      href="{% url 'make-correction' correction.id %}"
                       id="corrections"
                       class="btn"
                     >
@@ -230,6 +232,7 @@
               <!-- end correction-card -->
 
               <div class="col-md-8" id="reports-table">
+                <!--  -->
                 {% if reports %}
                 <div class="card">
                   <div class="card-body">
@@ -291,7 +294,7 @@
                   id="no-table-data"
                   alt="no-table-data"
                 />
-                <p class="text-center">No Reports data Available yet!</p>
+                <p>Nothing to display at the moment!</p>
                 {% endif %}
               </div>
               <!-- end reports-table -->
