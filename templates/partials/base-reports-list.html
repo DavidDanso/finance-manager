@@ -25,8 +25,8 @@
               <tr>
                 <td>{{report.account_owner.username}}</td>
                 <td>{{report.created_time_stamp|date:"d F, Y"}}</td>
-                <td>{{report.description|truncatechars:25}}</td>
-                <td>{{report.main_category}}</td>
+                <td>{{report.description|truncatechars:15}}</td>
+                <td>{{report.main_category|truncatechars:15}}</td>
                 <td>
                   {% if report.status == 'pending' %}
                   <span class="badge pending">pending</span>
@@ -38,7 +38,7 @@
                   <span class="badge approve">approve</span>
                   {% endif %}
                 </td>
-                <td>{{report.sub_category}}</td>
+                <td>{{report.sub_category|truncatechars:15}}</td>
                 <td>${{report.payment|floatformat:2|intcomma}}</td>
                 <td>
                   <a href="{% url 'download_report' report.id %}"

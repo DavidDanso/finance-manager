@@ -44,6 +44,7 @@ def admin_dashboard(request):
             if request.user.role == "admin":
                 report.status = 'approve'
             report.save()
+            messages.success(request, '📄 Report Created Successful')
             return redirect('dashboard')
         
     context = {'form': form, 'reports': reports, 
@@ -54,6 +55,8 @@ def admin_dashboard(request):
         return render(request, 'partials/base-reports-list.html', context)
     
     return render(request, 'u_admin/admin_dashboard.html', context)
+
+
 
 
 # edit_report view
@@ -75,6 +78,28 @@ def edit_report(request, pk):
     return render(request, 'edit-reports.html', context)
 
 
+# pending-reports view
+def pending_reports(request):
+    # Get the profile of the logged-in user
+    user = request.user.profile
+
+    # Fetch reports with the status 'pending' for the logged-in user
+    pending_reports = Report.objects.filter(status='pending', account_owner=user)
+
+    # Count the number of pending reports
+    pending_count = pending_reports.count()
+
+    # Prepare the context for rendering the template
+    context = {
+        'pending_reports': pending_reports,  # List of pending reports
+        'count': pending_count,      # Total count of pending reports
+    }
+    # Render the 'pending-reports.html' template with the context
+    return render(request, 'u_admin/pending-reports.html', context)
+
+
+
+
 # user_management view
 @login_required
 def user_management(request):
@@ -88,11 +113,14 @@ def user_management(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
+            messages.success(request, 'User created successful')
             return redirect('users')
     else:
         form = UserCreationForm()
     context = {'users': users, 'form': form}    
     return render(request, 'u_admin/user_management.html', context)
+
+
 
 
 # download_report view
@@ -174,7 +202,7 @@ def update_user(request, pk):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request, 'User updated successfully')
             return redirect('users')
     else:
         # Initialize forms with existing user and profile data

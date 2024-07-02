@@ -40,6 +40,13 @@
             >Users</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% active_link 'pending-reports' %}"
+            href="{% url 'pending-reports' %}"
+            >Pending Reports</a
+          >
+        </li>
       </ul>
       <!-- accountant nav -->
       {% elif request.user.role == 'accountant' %}

@@ -19,15 +19,19 @@
     />
     <meta name="author" content="the_desiinger" />
     <link rel="icon" href="{% static '/images/favicon.svg' %}" />
-    <title>Finance-Manager | Corrections Page</title>
+    <title>Finance-Manager | Pending-reports Page</title>
 
     <!-- Preload CSS -->
     <link rel="preload" as="style" href="{% static '/css/normalize.css' %}" />
-    <link rel="preload" as="style" href="{% static '/css/corrections.css' %}" />
+    <link
+      rel="preload"
+      as="style"
+      href="{% static '/css/pending-reports.css' %}"
+    />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static '/css/corrections.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/pending-reports.css' %}" />
 
     <!--  -->
     <!--  -->
@@ -70,14 +74,14 @@
         <div class="content content--full content--alternate"></div>
         <!-- End content -->
 
-        {% if correction_reports %}
+        {% if pending_reports %}
         <!--=========================================== Hero-Text ===============================-->
         <div id="hero">
           <div class="container-fluid">
             <div class="hero-intro">
               <h1>
-                You have <span>{{correction_count}}</span>
-                report{{ correction_count|pluralize }} returned for correction.
+                <span>{{count}}</span> new report{{ count|pluralize }} have been
+                created.
               </h1>
               <p>Review and update reports efficiently</p>
             </div>
@@ -100,7 +104,7 @@
             <!--  -->
 
             <div class="row">
-              {% for report in correction_reports %}
+              {% for report in pending_reports %}
               <div class="col-md-4" id="correction-card">
                 <div class="card">
                   <div class="card-body">
@@ -109,7 +113,7 @@
                     </h6>
                     <small
                       >report data
-                      <span class="badge correction">correction</span></small
+                      <span class="badge pending">pending</span></small
                     >
                     <hr />
 
@@ -135,8 +139,8 @@
                         id="correction_btn"
                         class="btn"
                       >
-                        <ion-icon name="reader-outline"></ion-icon> make
-                        correction
+                        <ion-icon name="reader-outline"></ion-icon> review
+                        report
                       </a>
                     </div>
                     <!-- end correction-btn -->
@@ -163,10 +167,10 @@
             id="report_img"
             alt="report_img"
           />
-          <h2>Correction Reports</h2>
+          <h2>Pending Reports</h2>
           <p>
-            No correction report is available at this time. Please check back
-            later for updates.
+            No pending report is available at this time. Please check back later
+            for updates.
           </p>
         </div>
         <!--  -->

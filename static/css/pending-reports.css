@@ -270,9 +270,9 @@ a:hover {
 #correction-card h3 ion-icon {
   vertical-align: middle;
 }
-#correction-card .correction {
-  background: #eadff8;
-  color: #8d75e6;
+#correction-card .pending {
+  background: #c1c7d1ca;
+  color: #5b616bca;
   font-size: 1.6vh;
   float: right;
 }
