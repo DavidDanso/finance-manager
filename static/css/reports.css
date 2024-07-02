@@ -386,6 +386,12 @@ a:hover {
   border: 1px solid #7b8fa199;
   color: var(--main-color);
 }
+#create-report-offcanvas .offcanvas form textarea:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #7b8fa199;
+  color: var(--main-color);
+}
 #create-report-offcanvas .offcanvas form input::placeholder {
   color: #7b8fa199;
 }

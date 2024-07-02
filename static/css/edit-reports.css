@@ -183,7 +183,8 @@ a:hover {
   border: 1px solid #7b8fa1;
 }
 .hero-intro select:focus,
-.hero-intro input:focus {
+.hero-intro input:focus,
+.hero-intro textarea:focus {
   box-shadow: none !important;
   outline: 0px !important;
   border: 1px solid #7b8fa199;

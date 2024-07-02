@@ -15,7 +15,7 @@ class ReportCreationForm(ModelForm):
         exculde = ['account_owner', 'status', 'updated_time_stamp', 'created_time_stamp', 'id']
         # add id and placeholder to the input field
         widgets = {
-            'description': forms.TextInput(attrs={'placeholder': 'enter descriptiony here...'}),
+            'description': forms.Textarea(attrs={'placeholder': 'enter descriptiony here...', 'rows': 3, 'cols': 40}),
             'main_category': forms.TextInput(attrs={'placeholder': 'enter main category...'}),
             'sub_category': forms.TextInput(attrs={'placeholder': 'enter sub category...'}),
         }
@@ -34,7 +34,7 @@ class ReportEditForm(ModelForm):
         exculde = ['account_owner', 'updated_time_stamp', 'created_time_stamp', 'id']
         # add id and placeholder to the input field
         widgets = {
-            'description': forms.TextInput(attrs={'placeholder': 'enter descriptiony here...'}),
+            'description': forms.Textarea(attrs={'placeholder': 'enter descriptiony here...', 'rows': 3, 'cols': 40}),
             'main_category': forms.TextInput(attrs={'placeholder': 'enter main category...'}),
             'sub_category': forms.TextInput(attrs={'placeholder': 'enter sub category...'}),
         }
