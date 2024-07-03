@@ -16,6 +16,7 @@ class Report(models.Model):
     sub_category = models.CharField(max_length=255, null=True, blank=True, db_index=True)
     status = models.CharField(max_length=255, default="pending", null=True, blank=True, choices=STATUS, db_index=True)
     payment = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, db_index=True)
+    report_note = models.TextField(null=True, blank=True, db_index=True)
     updated_time_stamp = models.DateTimeField(auto_now=True, db_index=True)
     created_time_stamp = models.DateTimeField(auto_now_add=True, db_index=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
