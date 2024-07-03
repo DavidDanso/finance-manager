@@ -24,8 +24,6 @@ def accountant_dashboard(request):
     # Fetch all reports for the user in a single query using select_related
     all_reports = Report.objects.select_related('account_owner').filter(account_owner=user)
 
-    # Fetch reports related to the user, excluding those with 'correction' status
-    other_reports = [report for report in all_reports if report.status != 'correction']
 
     # Get the latest correction report from the already fetched reports
     correction = next((report for report in all_reports if report.status == 'correction'), None)
@@ -49,7 +47,7 @@ def accountant_dashboard(request):
     current_date = datetime.now().strftime("%B %d, %Y")
 
     context = {
-        'reports': other_reports,
+        'reports': all_reports,
         'approve_count': approve_count,
         'reject_count': reject_count,
         'pending_count': pending_count,

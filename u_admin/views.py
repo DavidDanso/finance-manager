@@ -35,6 +35,9 @@ def admin_dashboard(request):
     # get total amounts based on approved reports
     total_amount = Report.objects.filter(status='approve').aggregate(Sum('payment'))['payment__sum']
 
+    # Fetch reports related to the user, excluding those with 'pending' status
+    other_reports = [report for report in reports if report.status != 'pending']
+
     #
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
@@ -47,7 +50,7 @@ def admin_dashboard(request):
             messages.success(request, '📄 Report Created Successful')
             return redirect('dashboard')
         
-    context = {'form': form, 'reports': reports, 
+    context = {'form': form, 'reports': other_reports, 
                'filter': report_filter, 'reports_count': pending_reports_count,
                'total_amount': total_amount}
 
@@ -71,6 +74,8 @@ def edit_report(request, pk):
         if form.is_valid():
             messages.success(request, 'Report successfully updated! ✅')
             report.save()
+            return redirect('dashboard')
+        
         else:
             messages.error(request, 'Report update failed. 🚫')
         
@@ -83,8 +88,8 @@ def pending_reports(request):
     # Get the profile of the logged-in user
     user = request.user.profile
 
-    # Fetch reports with the status 'pending' for the logged-in user
-    pending_reports = Report.objects.filter(status='pending', account_owner=user)
+    # Fetch all reports with the status 'pending'
+    pending_reports = Report.objects.filter(status='pending')
 
     # Count the number of pending reports
     pending_count = pending_reports.count()

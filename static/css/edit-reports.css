@@ -134,6 +134,9 @@ a:hover {
   font-size: 1.8rem;
   margin-top: 2%;
 }
+.hero-intro h5 ion-icon {
+  vertical-align: middle;
+}
 
 /* status */
 .hero-intro .badge {

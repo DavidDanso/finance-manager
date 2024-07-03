@@ -73,19 +73,7 @@
           <div class="container-fluid">
             <div class="hero-intro">
               <!--  -->
-              {% if request.user.role == 'admin' %}
-              <!--  -->
-              {% url 'dashboard' as url %}
-              <!--  -->
-              {% elif request.user.role == 'accountant' %}
-              <!--  -->
-              {% url 'a_dashboard' as url %}
-              <!--  -->
-              {% endif %}
-
-              <!--  -->
-              {% if url %}
-              <a href="{{ url }}">
+              <a href="javascript:history.back()">
                 <img
                   src="{% static '/images/left.png' %}"
                   class="img-fluid"
@@ -93,13 +81,16 @@
                   alt="return_back-img"
                 />
               </a>
-              {% endif %}
               <!--  -->
               <div class="card d-flex mx-auto" id="edit_card">
                 <div class="card-body">
                   <div class="card">
                     <div class="card-body">
-                      <h5>Edit report - [{{report.account_owner}}]</h5>
+                      <h5>
+                        Edit report - [
+                        <ion-icon name="person-circle-sharp"></ion-icon>
+                        {{report.account_owner}} ]
+                      </h5>
                       {% if report.status == 'pending' %}
                       <span class="badge pending">pending</span>
                       {% elif report.status == 'reject' %}
@@ -233,6 +224,15 @@
       crossorigin="anonymous"
     ></script>
     <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!--  -->
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
   </body>

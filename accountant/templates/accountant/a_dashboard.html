@@ -240,19 +240,19 @@
                       <thead>
                         <tr>
                           <th scope="col">username</th>
+                          <th scope="col">description</th>
                           <th scope="col">main category</th>
                           <th scope="col">status</th>
-                          <th scope="col">sub category</th>
                           <th scope="col">payment</th>
                           <th scope="col">download</th>
-                          <th scope="col">edit</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for report in reports %}
                         <tr>
                           <td>{{report.account_owner.username}}</td>
-                          <td>{{report.main_category|truncatechars:10}}</td>
+                          <td>{{report.description|truncatechars:15}}</td>
+                          <td>{{report.main_category|truncatechars:15}}</td>
                           <td>
                             {% if report.status == 'pending' %}
                             <span class="badge pending">pending</span>
@@ -264,19 +264,11 @@
                             <span class="badge approve">approve</span>
                             {% endif %}
                           </td>
-                          <td>{{report.sub_category|truncatechars:10}}</td>
                           <td>${{report.payment|floatformat:2|intcomma}}</td>
                           <td>
                             <a href="{% url 'download_report' report.id %}"
                               ><ion-icon name="download-outline"></ion-icon
                             ></a>
-                          </td>
-                          <td>
-                            <a href="{% url 'edit-report' report.id %}">
-                              <ion-icon
-                                name="ellipsis-horizontal-outline"
-                              ></ion-icon>
-                            </a>
                           </td>
                         </tr>
                         {% endfor %}

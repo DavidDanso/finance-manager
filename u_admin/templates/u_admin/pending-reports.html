@@ -118,15 +118,15 @@
                     <hr />
 
                     <h3 id="description">
-                      {{report.description|truncatechars:40}}
+                      {{report.description|truncatechars:32}}
                     </h3>
                     <h3 id="main_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      {{report.main_category|truncatechars:30}}
+                      {{report.main_category|truncatechars:32}}
                     </h3>
                     <h3 id="sub_cat">
                       <ion-icon name="checkbox-outline"></ion-icon>
-                      {{report.sub_category|truncatechars:30}}
+                      {{report.sub_category|truncatechars:32}}
                     </h3>
                     <h3 id="payment">
                       <ion-icon name="checkbox-outline"></ion-icon>
@@ -135,7 +135,7 @@
                     <!-- correction-btn -->
                     <div class="d-grid gap-2">
                       <a
-                        href="{% url 'make-correction' report.id %}"
+                        href="{% url 'report-edit' report.id %}"
                         id="correction_btn"
                         class="btn"
                       >
