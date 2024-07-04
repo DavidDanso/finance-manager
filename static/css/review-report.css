@@ -120,7 +120,7 @@ a:hover {
   margin-bottom: 3%;
 }
 .hero-intro #review_card {
-  max-width: 50%;
+  max-width: 60%;
 }
 
 /*  */
@@ -219,8 +219,8 @@ a:hover {
   color: var(--main-color);
 }
 
-/*  */
-.hero-intro #edit_btn {
+/*  action_btn */
+.hero-intro #action_btn {
   color: var(--text-color);
   letter-spacing: 1px;
   font-family: var(--text-font);
@@ -228,7 +228,7 @@ a:hover {
   background-color: #3e6567;
   transition: all 0.5s ease-in-out;
 }
-.hero-intro #edit_btn:hover {
+.hero-intro #action_btn:hover {
   color: var(--text-color);
   background: #3e6567c4;
   transition: all 0.5s ease-in-out;

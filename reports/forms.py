@@ -15,10 +15,10 @@ class ReportCreationForm(ModelForm):
         exculde = ['account_owner', 'status', 'updated_time_stamp', 'created_time_stamp', 'id']
         # add id and placeholder to the input field
         widgets = {
-            'description': forms.Textarea(attrs={'placeholder': 'enter report descriptiony here...', 'rows': 3, 'cols': 40}),
+            'description': forms.Textarea(attrs={'placeholder': 'enter report description here...', 'rows': 3, 'cols': 40}),
             'main_category': forms.TextInput(attrs={'placeholder': 'enter main category...'}),
             'sub_category': forms.TextInput(attrs={'placeholder': 'enter sub category...'}),
-            'report_note': forms.Textarea(attrs={'placeholder': 'enter report here...', 'rows': 3, 'cols': 40}),
+            'report_note': forms.Textarea(attrs={'placeholder': 'enter report note here...', 'rows': 3, 'cols': 40}),
         }
     # add class to the input field
     def __init__(self, *args, **kwargs):
@@ -35,14 +35,30 @@ class ReportEditForm(ModelForm):
         exculde = ['account_owner', 'updated_time_stamp', 'created_time_stamp', 'id']
         # add id and placeholder to the input field
         widgets = {
-            'description': forms.Textarea(attrs={'placeholder': 'enter report descriptiony here...', 'rows': 3, 'cols': 40}),
+            'description': forms.Textarea(attrs={'placeholder': 'enter report description here...', 'rows': 3, 'cols': 40}),
             'main_category': forms.TextInput(attrs={'placeholder': 'enter main category...'}),
             'sub_category': forms.TextInput(attrs={'placeholder': 'enter sub category...'}),
-            'report_note': forms.Textarea(attrs={'placeholder': 'enter report here...', 'rows': 3, 'cols': 40}),
+            'report_note': forms.Textarea(attrs={'placeholder': 'enter report note here...', 'rows': 3, 'cols': 40}),
         }
     # add class to the input field
     def __init__(self, *args, **kwargs):
         super(ReportEditForm, self).__init__(*args, **kwargs)
+        for name, fields in self.fields.items():
+            fields.widget.attrs.update({'class': 'input form-control'})
+
+
+class ReviewReportForm(ModelForm):
+    class Meta:
+        model = Report
+        fields = ['status', 'report_note']
+    
+        # add id and placeholder to the input field
+        widgets = {
+            'report_note': forms.Textarea(attrs={'placeholder': 'enter report note here...', 'rows': 3, 'cols': 40}),
+        }
+    # add class to the input field
+    def __init__(self, *args, **kwargs):
+        super(ReviewReportForm, self).__init__(*args, **kwargs)
         for name, fields in self.fields.items():
             fields.widget.attrs.update({'class': 'input form-control'})
 

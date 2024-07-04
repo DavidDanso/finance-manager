@@ -3,7 +3,7 @@ from accounts.models import Profile
 from .forms import UserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from reports.forms import ReportCreationForm, ReportEditForm
+from reports.forms import ReportCreationForm, ReportEditForm, ReviewReportForm
 from django.http import HttpResponse
 from openpyxl import Workbook
 from django.db.models import Sum
@@ -66,7 +66,13 @@ def admin_dashboard(request):
 # review report view
 def review_report(request, report_id):
     report = Report.objects.get(id=report_id)
-    form = ReportEditForm(instance=report)
+    form = ReviewReportForm(instance=report)
+
+    if request.method == 'POST':
+        form = ReviewReportForm(request.POST, instance=report)
+        if form.is_valid():
+            form.save()
+            return redirect('pending-reports')
 
     context = {'form': form, 'report': report}
     return render(request, 'u_admin/review-report.html', context)

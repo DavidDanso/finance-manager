@@ -128,7 +128,54 @@
                       <!--  -->
                       <hr />
                       <!--  -->
-                      <form action="" method="POST">{% csrf_token %}</form>
+                      <form action="" method="POST">
+                        {% csrf_token %} {{formas_p}}
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlInput1"
+                                class="form-label"
+                                >Change Status
+                                <sup class="text-danger fw-bold fs-6"
+                                  >*</sup
+                                ></label
+                              >
+                              {{form.status}}
+                            </div>
+                            <!-- end report-status -->
+                          </div>
+                          <!-- end col-report-status -->
+
+                          <div class="col-md-8">
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlInput1"
+                                class="form-label"
+                                >Leave Note for Accountant
+                                <sup class="text-danger fw-bold fs-6"
+                                  >*</sup
+                                ></label
+                              >
+                              {{form.report_note}}
+                            </div>
+                            <!-- end email -->
+                          </div>
+                          <!-- end col-email -->
+                        </div>
+                        <!-- end row -->
+
+                        <!--  -->
+                        <div class="d-grid gap-2">
+                          <input
+                            type="submit"
+                            id="action_btn"
+                            class="btn"
+                            value="Save changes"
+                          />
+                        </div>
+                        <!-- end action_btn -->
+                      </form>
                     </div>
                     <!-- end card-body -->
                   </div>
