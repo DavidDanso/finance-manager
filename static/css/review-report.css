@@ -119,15 +119,11 @@ a:hover {
   height: 40px;
   margin-bottom: 3%;
 }
-.hero-intro #edit_card {
+.hero-intro #review_card {
   max-width: 50%;
 }
 
 /*  */
-.hero-intro #card {
-  border: 1px solid #7eb1fd8d;
-  margin-top: 3%;
-}
 .hero-intro h5 {
   letter-spacing: 1px;
   font-family: var(--header-font);
@@ -140,7 +136,7 @@ a:hover {
 
 /* status */
 .hero-intro .badge {
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 .hero-intro .pending {
   background: #c1c7d1ca;
@@ -161,6 +157,36 @@ a:hover {
   background: #ffe2d5;
   color: #ff4539;
   font-size: 1.6vh;
+}
+
+.hero-intro h2 {
+  font-size: 1.3rem;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+.hero-intro p {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  line-height: 1.3;
+  margin-bottom: 5%;
+}
+.hero-intro h3 {
+  font-size: 1.1rem;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  margin-bottom: 2%;
+}
+.hero-intro h3 ion-icon {
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.hero-intro h3 span {
+  font-family: var(--text-font);
+  font-size: 1.2rem;
 }
 
 /*  */
@@ -186,7 +212,6 @@ a:hover {
   border: 1px solid #7b8fa1;
 }
 .hero-intro select:focus,
-.hero-intro input:focus,
 .hero-intro textarea:focus {
   box-shadow: none !important;
   outline: 0px !important;
@@ -209,42 +234,11 @@ a:hover {
   transition: all 0.5s ease-in-out;
 }
 
-/*  */
-.hide_status {
-  background-color: #eee; /* Add a background color to indicate disabled state */
-  pointer-events: none; /* Disable pointer events to make it visually disabled */
-  opacity: 0.6; /* Optionally reduce opacity to further indicate disabled state */
-}
-
 /* ReportNote */
 #ReportNote {
   margin-top: 3%;
 }
 
-/* make-correction */
-.hero-intro #correction_card {
-  max-width: 50%;
-}
-.hero-intro #correction_card .badge {
-  margin-bottom: 5%;
-}
-#msg_box {
-  margin-top: -3%;
-}
-.hero-intro p {
-  color: var(--main-color);
-  letter-spacing: 1px;
-  font-family: var(--text-font);
-  font-size: 1.2rem;
-  line-height: 1.2;
-  margin-bottom: 6%;
-  border: 1px solid #33333327;
-  padding: 2%;
-}
-.hero-intro p ion-icon {
-  color: #3e6567;
-  vertical-align: middle;
-}
 /********************** Extra small devices (portrait phones, less than 576px) ****************************/
 @media (max-width: 575.98px) {
   body {

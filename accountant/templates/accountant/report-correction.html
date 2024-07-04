@@ -82,7 +82,7 @@
                 />
               </a>
               <!--  -->
-              <div class="card d-flex mx-auto" id="edit_card">
+              <div class="card d-flex mx-auto" id="correction_card">
                 <div class="card-body">
                   <div class="card">
                     <div class="card-body">
@@ -100,7 +100,13 @@
                       {% else %}
                       <span class="badge approve">approve</span>
                       {% endif %}
-
+                      <!--  -->
+                      {% if report.report_note %}
+                      <p id="msg_box">
+                        <ion-icon name="chatbox"></ion-icon>
+                        {{report.report_note}}
+                      </p>
+                      {% endif %}
                       <!--  -->
                       <form method="post">
                         {% csrf_token %}
@@ -193,7 +199,7 @@
 
                         <div class="d-grid gap-2">
                           <button type="submit" class="btn" id="edit_btn">
-                            Save Report
+                            Save Report Changes
                           </button>
                         </div>
                       </form>
@@ -205,7 +211,7 @@
                 </div>
                 <!-- end edit_card-card-body -->
               </div>
-              <!-- end edit_card -->
+              <!-- end correction_card -->
             </div>
             <!-- End hero-intro-->
           </div>

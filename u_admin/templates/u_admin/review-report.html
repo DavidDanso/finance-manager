@@ -1,0 +1,170 @@
+{% load static %}
+<!--  -->
+{% load widget_tweaks %}
+<!--  -->
+{% load humanize %}
+<!--  -->
+<!DOCTYPE html>
+<html lang="en" class="js has-scroll-init has-scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Enhance your reporting capabilities with the Excel Report Manager App."
+    />
+    <meta
+      name="keywords"
+      content="report manager, Excel reports, reporting software"
+    />
+
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static '/images/favicon.svg' %}" />
+    <title>excel-report-manager | Review Report Page</title>
+
+    <!-- Preload CSS -->
+    <link href="{% static '/css/normalize.css' %}" />
+    <link
+      rel="preload"
+      as="style"
+      href="{% static '/css/review-report.css' %}"
+    />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/review-report.css' %}" />
+
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function () {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this work in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body
+    id="pageTop"
+    class="page-content"
+    data-spy="scroll"
+    data-target="#mainNav"
+  >
+    <!--======================== Main-Section ================================-->
+    {% include 'toast.html' %}
+    <main>
+      <!--=========================================== smooth-scroll-effect ===============================-->
+      <div data-scroll class="page page--layout-2" id="main">
+        <div class="content content--full content--alternate"></div>
+        <!-- End content -->
+
+        <!--=========================================== Hero-Section ===============================-->
+        <div id="hero">
+          <div class="container-fluid">
+            <div class="hero-intro">
+              <!--  -->
+              <a href="javascript:history.back()">
+                <img
+                  src="{% static '/images/left.png' %}"
+                  class="img-fluid"
+                  id="return_back"
+                  alt="return_back-img"
+                />
+              </a>
+              <!--  -->
+              <div class="card d-flex mx-auto" id="review_card">
+                <div class="card-body">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5>
+                        Review report - [
+                        <ion-icon name="person-circle-sharp"></ion-icon>
+                        {{report.account_owner}} ]
+                      </h5>
+                      <!--  -->
+                      <h6>
+                        {% if report.status == 'pending' %}
+                        <span class="badge pending">pending</span>
+                        {% elif report.status == 'reject' %}
+                        <span class="badge reject">reject</span>
+                        {% elif report.status == 'correction' %}
+                        <span class="badge correction">correction</span>
+                        {% else %}
+                        <span class="badge approve">approve</span>
+                        {% endif %}
+                      </h6>
+                      <!--  -->
+                      <!--  -->
+                      <h2>description</h2>
+                      <p>{{report.description}}</p>
+                      <!--  -->
+                      <h3>
+                        <ion-icon name="ticket-outline"></ion-icon>
+                        Main Category :
+                        <span>{{report.main_category}}</span>
+                      </h3>
+                      <h3>
+                        <ion-icon name="ticket-outline"></ion-icon>
+                        Sub Category :
+                        <span>{{report.sub_category}}</span>
+                      </h3>
+                      <h3>
+                        <ion-icon name="cash-outline"></ion-icon>
+                        Payment :
+                        <span>${{report.payment|floatformat:2|intcomma}}</span>
+                      </h3>
+                      <!--  -->
+                      <hr />
+                      <!--  -->
+                      <form action="" method="POST">{% csrf_token %}</form>
+                    </div>
+                    <!-- end card-body -->
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end edit_card-card-body -->
+              </div>
+              <!-- end review_card -->
+            </div>
+            <!-- End hero-intro-->
+          </div>
+          <!-- End container-fluid -->
+        </div>
+        <!-- End hero -->
+      </div>
+      <!-- End page--layout -->
+    </main>
+    <!-- End Main-Section -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom Links -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!--  -->
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

@@ -62,6 +62,18 @@ def admin_dashboard(request):
 
 
 
+
+# review report view
+def review_report(request, report_id):
+    report = Report.objects.get(id=report_id)
+    form = ReportEditForm(instance=report)
+
+    context = {'form': form, 'report': report}
+    return render(request, 'u_admin/review-report.html', context)
+
+
+
+
 # edit_report view
 @login_required
 def edit_report(request, pk):
@@ -83,11 +95,10 @@ def edit_report(request, pk):
     return render(request, 'edit-reports.html', context)
 
 
+
+
 # pending-reports view
 def pending_reports(request):
-    # Get the profile of the logged-in user
-    user = request.user.profile
-
     # Fetch all reports with the status 'pending'
     pending_reports = Report.objects.filter(status='pending')
 
