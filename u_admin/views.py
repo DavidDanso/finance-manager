@@ -32,8 +32,11 @@ def admin_dashboard(request):
     # get total pending reports
     pending_reports_count = Report.objects.filter(status='pending').count()
 
-    # get total amounts based on approved reports
+    # Query the database to get the sum of 'payment' where status is 'approve'
     total_amount = Report.objects.filter(status='approve').aggregate(Sum('payment'))['payment__sum']
+
+    # If total_amount is None, set it to 0
+    total_amount = total_amount if total_amount is not None else 0
 
     # Fetch reports related to the user, excluding those with 'pending' status
     other_reports = [report for report in reports if report.status != 'pending']

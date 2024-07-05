@@ -123,11 +123,17 @@
                         total payments
                       </h6>
                       <div id="stats">
+                        {% if total_amount == 0 %}
+                        <center>
+                          <small>$0.00</small>
+                        </center>
+                        {% else %}
                         <center>
                           <small
                             >${{ total_amount|floatformat:2|intcomma }}</small
                           >
                         </center>
+                        {% endif %}
                       </div>
                       <!-- end stats -->
                     </div>
