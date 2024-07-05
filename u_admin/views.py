@@ -84,21 +84,39 @@ def review_report(request, report_id):
 # edit_report view
 @login_required
 def edit_report(request, pk):
+    # Get the report object based on the provided primary key
     report = Report.objects.get(id=pk)
+    
+    # Create a form instance pre-populated with the report data
     form = ReportEditForm(instance=report)
 
-    #
+    # Handle form submission
     if request.method == "POST":
+        # Check if the user wants to delete the report
+        if 'delete_report' in request.POST:
+            # Delete the report and redirect to the dashboard
+            report.delete()
+            messages.success(request, 'Report deleted successfully')
+            return redirect('dashboard')
+        
+        # Create a form instance with the submitted data and the report instance
         form = ReportEditForm(request.POST, instance=report)
+        
+        # Check if the form is valid
         if form.is_valid():
+            # Save the updated report and display a success message
             messages.success(request, 'Report successfully updated! ✅')
             report.save()
             return redirect('dashboard')
         
         else:
+            # Display an error message if the form is invalid
             messages.error(request, 'Report update failed. 🚫')
         
+    # Prepare the context for rendering the template
     context = {'form': form, 'report': report}
+    
+    # Render the edit-reports.html template with the context
     return render(request, 'edit-reports.html', context)
 
 

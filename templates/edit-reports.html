@@ -102,10 +102,9 @@
                       {% endif %}
 
                       <!--  -->
-                      <form method="post">
+                      <form method="POST" action="">
                         {% csrf_token %}
                         <!--  -->
-                        <!-- {{ form.as_p }} -->
                         <div class="row">
                           <div class="col-md-12">
                             <div class="mb-3">
@@ -205,11 +204,23 @@
                         </div>
                         <!-- end form_row -->
 
-                        <div class="d-grid gap-2">
+                        <div id="action_btn">
                           <button type="submit" class="btn" id="edit_btn">
                             Save Report
                           </button>
+                          <a
+                            href="#delete"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteReportModal"
+                          >
+                            <img
+                              id="trash"
+                              src="{% static '/images/trash.png' %}"
+                              alt="trash"
+                            />
+                          </a>
                         </div>
+                        <!-- end action_btn -->
                       </form>
                       <!--  -->
                     </div>
@@ -226,6 +237,10 @@
           <!-- End container-fluid -->
         </div>
         <!-- End hero -->
+
+        <!--=========================================== delete-report-Modal--layout ===============================-->
+        {% include 'delete-report-modal.html' %}
+        <!-- End delete-report-modal-->
       </div>
       <!-- End page--layout -->
     </main>
