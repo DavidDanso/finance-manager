@@ -71,6 +71,7 @@ def review_report(request, report_id):
     if request.method == 'POST':
         form = ReviewReportForm(request.POST, instance=report)
         if form.is_valid():
+            messages.success(request, 'Report Review Completed Successfully!')
             form.save()
             return redirect('pending-reports')
 

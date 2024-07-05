@@ -95,6 +95,7 @@ def make_correction(request, report_id):
         form = ReportEditForm(request.POST, instance=report)
         report = form.save(commit=False)
         report.status = 'pending'
+        messages.success(request, 'Report successfully sent to Admin!')
         report.save()
         return redirect('corrections')
     
@@ -165,6 +166,7 @@ def create_report(request):
         if form.is_valid():
             report = form.save(commit=False)
             report.account_owner = user
+            messages.success(request, 'Report successfully created! ✅')
             report.save()
             return redirect('reports')
         
