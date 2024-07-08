@@ -188,11 +188,13 @@ a:hover {
   border: transparent;
   border: 1px solid #7b8fa127;
   background: var(--main-color);
+  padding: 0.7rem 0.7rem;
+  border-radius: 0.5rem;
 }
 #user_profile form input:focus {
   box-shadow: none !important;
   outline: 0px !important;
-  border: 1px solid #7b8fa150;
+  border: 1px solid #7b8fa19f;
   color: var(--text-color);
 }
 #user_profile form input::placeholder {
