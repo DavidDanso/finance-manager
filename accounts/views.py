@@ -4,14 +4,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
 from .forms import *
+from django.contrib.auth import get_user_model
 
 
 # login view
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        username = request.POST['username'].lower()
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        
+        # Ensure the username is case-insensitive
+        UserModel = get_user_model()
+        try:
+            user = UserModel.objects.get(username__iexact=username)
+            # Authenticate with the original username case
+            user = authenticate(request, username=user.username, password=password)
+        except UserModel.DoesNotExist:
+            user = None
+        
         if user is not None:
             login(request, user)
             if user.role == 'accountant':
@@ -22,6 +32,7 @@ def login_view(request):
                 return redirect('manager_dashboard')
         else:
             messages.error(request, 'Invalid username or password')
+    
     return render(request, 'accounts/login.html')
 
 
