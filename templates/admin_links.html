@@ -1,0 +1,26 @@
+{% extends "navbar_common.html" %} {% block left_links %}
+<li class="nav-item">
+  <a class="nav-link {% active_link 'dashboard' %}" href="{% url 'dashboard' %}"
+    >Admin Dashboard</a
+  >
+</li>
+<li class="nav-item">
+  <a class="nav-link {% active_link 'users' %}" href="{% url 'users' %}"
+    >Users</a
+  >
+</li>
+<li class="nav-item">
+  <a
+    class="nav-link {% active_link 'pending-reports' %}"
+    href="{% url 'pending-reports' %}"
+    >Pending Reports</a
+  >
+</li>
+{% endblock %}
+<!--  -->
+{% block notifications %}
+<!--  -->
+{% include "notifications.html" with notifications=pending_reports
+notifications_url='pending-reports' %}
+<!--  -->
+{% endblock %}

@@ -297,6 +297,21 @@ a:hover {
 }
 
 /*  */
+#edit_btn {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  background-color: #3e6567;
+  transition: all 0.5s ease-in-out;
+}
+#edit_btn:hover {
+  color: var(--text-color);
+  background: #3e6567c4;
+  transition: all 0.5s ease-in-out;
+}
+
+/*  */
 #action_btn {
   display: flex;
   justify-content: space-between;

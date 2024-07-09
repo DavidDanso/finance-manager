@@ -1,0 +1,28 @@
+{% extends "navbar_common.html" %} {% block left_links %}
+<li class="nav-item">
+  <a
+    class="nav-link {% active_link 'a_dashboard' %}"
+    href="{% url 'a_dashboard' %}"
+    >Accountant Dashboard</a
+  >
+</li>
+<li class="nav-item">
+  <a
+    class="nav-link {% active_link 'corrections' %}"
+    href="{% url 'corrections' %}"
+    >Reports for Correction</a
+  >
+</li>
+<li class="nav-item">
+  <a class="nav-link {% active_link 'reports' %}" href="{% url 'reports' %}"
+    >Reports</a
+  >
+</li>
+{% endblock %}
+<!--  -->
+{% block notifications %}
+<!--  -->
+{% include "notifications.html" with notifications=correction_reports
+notifications_url='corrections' %}
+<!--  -->
+{% endblock %}
