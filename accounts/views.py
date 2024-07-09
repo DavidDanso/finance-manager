@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+from reports.models import Report
 from .models import *
 from .forms import *
 from django.contrib.auth import get_user_model
@@ -61,8 +63,15 @@ def profilePage(request):
                 profile.delete()
                 messages.success(request, 'Account delete Successful')
                 return redirect('login')
+        
+    # Fetch reports with the status 'correction' for the logged-in user[ notification ]
+    correction_reports = Report.objects.filter(status='correction', account_owner=profile)
 
-    context = {'form': form, 'profile': profile}
+    # Fetch all reports with the status 'pending'[ notification ]
+    pending_reports = Report.objects.filter(status='pending')
+
+    context = {'form': form, 'profile': profile, 
+               'correction_reports': correction_reports, 'pending_reports': pending_reports}
     return render(request, 'profile.html', context)
 
 

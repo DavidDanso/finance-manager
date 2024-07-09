@@ -37,6 +37,9 @@ def accountant_dashboard(request):
         correction_count=Count('id', filter=Q(status='correction')),
     )
 
+    # Fetch reports with the status 'correction' for the logged-in user[ notification ]
+    correction_reports = Report.objects.filter(status='correction', account_owner=user)
+
     # Extract the counts from the aggregated result
     approve_count = status_counts['approve_count']
     reject_count = status_counts['reject_count']
@@ -53,7 +56,8 @@ def accountant_dashboard(request):
         'pending_count': pending_count,
         'correction_count': correction_count,
         'current_date': current_date,
-        'correction': correction
+        'correction': correction,
+        'correction_reports': correction_reports
     }
     
     return render(request, 'accountant/a_dashboard.html', context)
@@ -160,6 +164,9 @@ def create_report(request):
     #
     status_list = ['reject', 'approve', 'pending']
 
+    # Fetch reports with the status 'correction' for the logged-in user[ notification ]
+    correction_reports = Report.objects.filter(status='correction', account_owner=user)
+
     # create reports
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
@@ -170,7 +177,10 @@ def create_report(request):
             report.save()
             return redirect('reports')
         
-    context = {'form': form, 'reports': reports, 'filter': report_filter, 'list': status_list, 'user': user}
+    context = {'form': form, 'reports': reports, 
+               'filter': report_filter, 
+               'list': status_list, 'user': user,
+               'correction_reports': correction_reports}
 
     if request.htmx:
         return render(request, 'partials/reports-list.html', context)

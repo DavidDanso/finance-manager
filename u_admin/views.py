@@ -41,6 +41,9 @@ def admin_dashboard(request):
     # Fetch reports related to the user, excluding those with 'pending' status
     other_reports = [report for report in reports if report.status != 'pending']
 
+    # Fetch all reports with the status 'pending'[ notification ]
+    pending_reports = Report.objects.filter(status='pending')
+
     #
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
@@ -55,7 +58,7 @@ def admin_dashboard(request):
         
     context = {'form': form, 'reports': other_reports, 
                'filter': report_filter, 'reports_count': pending_reports_count,
-               'total_amount': total_amount}
+               'total_amount': total_amount, 'pending_reports': pending_reports}
 
     if request.htmx:
         return render(request, 'partials/base-reports-list.html', context)
@@ -161,7 +164,11 @@ def user_management(request):
             return redirect('users')
     else:
         form = UserCreationForm()
-    context = {'users': users, 'form': form}    
+
+    # Fetch all reports with the status 'pending'[ notification ]
+    pending_reports = Report.objects.filter(status='pending')
+
+    context = {'users': users, 'form': form, 'pending_reports': pending_reports}    
     return render(request, 'u_admin/user_management.html', context)
 
 

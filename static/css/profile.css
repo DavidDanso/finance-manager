@@ -243,8 +243,11 @@ a:hover {
   font-family: var(--text-font);
   letter-spacing: 1px;
   font-size: 1.9vh;
-  margin-top: 4px;
+  margin-top: 6px;
 }
+/* #delete__btn { */
+/* margin-top: 6%; */
+/* } */
 #trash {
   width: 28px;
   margin-left: 7px;
@@ -488,7 +491,7 @@ footer p {
   }
   #user_profile a {
     font-size: 1.9vh;
-    margin-top: 4px;
+    margin-top: 12px;
   }
   #trash {
     width: 22px;

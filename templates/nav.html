@@ -50,43 +50,17 @@
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0" id="rightNav">
         <!--  -->
-        <li class="nav-item align-self-center">
-          {% if pending_reports %}
-          <a class="nav-link" href="{% url 'pending-reports' %}">
-            <img
-              id="notification_img"
-              src="{% static '/images/notification.png' %}"
-              class="img-fluid"
-              alt="notification_img"
-            />
-            <sup
-              ><img
-                id="notification_dot"
-                src="{% static '/images/dot.svg' %}"
-                class="img-fluid"
-                alt="notification_dot"
-            /></sup>
-          </a>
-          {% else %}
-          <a class="nav-link" href="{% url 'pending-reports' %}">
-            <img
-              id="notification_img"
-              src="{% static '/images/notification.png' %}"
-              class="img-fluid"
-              alt="notification_img"
-            />
-          </a>
-          {% endif %}
-        </li>
+        {% include 'admin_links.html' %}
         <!-- end notification -->
 
         <li class="nav-item align-self-center" id="nav_span"><span>|</span></li>
         <!--  -->
+
         <li class="nav-item dropdown">
           <a class="nav-link" href="{% url 'profile' %}">
             <img
               id="profile_img"
-              src="{% static '/images/avatar.webp' %}"
+              src="{% static '/images/avatar.png' %}"
               class="img-fluid rounded-circle"
               alt="profile_img"
             />
@@ -94,7 +68,8 @@
           </a>
         </li>
       </ul>
-
+      <!-- end admin nav -->
+      <!-- *********************************************** -->
       <!-- accountant nav -->
       {% elif request.user.role == 'accountant' %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 left--links">
@@ -123,35 +98,7 @@
       <!--  -->
       <ul class="navbar-nav mb-2 mb-lg-0" id="rightNav">
         <!--  -->
-        <li class="nav-item align-self-center">
-          {% if correction_reports %}
-          <a class="nav-link" href="{% url 'corrections' %}">
-            <img
-              id="notification_img"
-              src="{% static '/images/notification.png' %}"
-              class="img-fluid"
-              alt="notification_img"
-            />
-            <sup
-              ><img
-                id="notification_dot"
-                src="{% static '/images/dot.svg' %}"
-                class="img-fluid"
-                alt="notification_dot"
-            /></sup>
-          </a>
-          {% else %}
-          <a class="nav-link" href="{% url 'corrections' %}">
-            <img
-              id="notification_img"
-              src="{% static '/images/notification.png' %}"
-              class="img-fluid"
-              alt="notification_img"
-            />
-          </a>
-          {% endif %}
-          <!-- accountant nav -->
-        </li>
+        {% include 'accountant_links.html' %}
         <!-- end notification -->
 
         <li class="nav-item align-self-center" id="nav_span"><span>|</span></li>
@@ -160,7 +107,7 @@
           <a class="nav-link" href="{% url 'profile' %}">
             <img
               id="profile_img"
-              src="{% static '/images/avatar.webp' %}"
+              src="{% static '/images/avatar.png' %}"
               class="img-fluid rounded-circle"
               alt="profile_img"
             />
@@ -168,6 +115,7 @@
           </a>
         </li>
       </ul>
+      <!-- end accountant nav -->
       {% endif %}
     </div>
   </div>

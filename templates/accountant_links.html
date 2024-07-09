@@ -1,28 +1,31 @@
-{% extends "navbar_common.html" %} {% block left_links %}
-<li class="nav-item">
-  <a
-    class="nav-link {% active_link 'a_dashboard' %}"
-    href="{% url 'a_dashboard' %}"
-    >Accountant Dashboard</a
-  >
-</li>
-<li class="nav-item">
-  <a
-    class="nav-link {% active_link 'corrections' %}"
-    href="{% url 'corrections' %}"
-    >Reports for Correction</a
-  >
-</li>
-<li class="nav-item">
-  <a class="nav-link {% active_link 'reports' %}" href="{% url 'reports' %}"
-    >Reports</a
-  >
-</li>
-{% endblock %}
+{% load static %}
 <!--  -->
-{% block notifications %}
-<!--  -->
-{% include "notifications.html" with notifications=correction_reports
-notifications_url='corrections' %}
-<!--  -->
-{% endblock %}
+<li class="nav-item align-self-center">
+  {% if correction_reports %}
+  <a class="nav-link" href="{% url 'corrections' %}">
+    <img
+      id="notification_img"
+      src="{% static '/images/notification.png' %}"
+      class="img-fluid"
+      alt="notification_img"
+    />
+    <sup
+      ><img
+        id="notification_dot"
+        src="{% static '/images/dot.svg' %}"
+        class="img-fluid"
+        alt="notification_dot"
+    /></sup>
+  </a>
+  {% else %}
+  <a class="nav-link" href="{% url 'corrections' %}">
+    <img
+      id="notification_img"
+      src="{% static '/images/notification.png' %}"
+      class="img-fluid"
+      alt="notification_img"
+    />
+  </a>
+  {% endif %}
+  <!-- accountant nav -->
+</li>
