@@ -116,8 +116,17 @@ a:hover {
 
 /* nav-|| */
 #nav_span {
-  margin-left: 12px;
+  margin-left: 1px;
   margin-right: 12px;
+}
+#notification_img {
+  width: 25px;
+  vertical-align: middle;
+}
+#notification_dot {
+  width: 9px;
+  margin-left: -42%;
+  margin-top: -15%;
 }
 
 /****************************************** Hero-Section ************************************/
