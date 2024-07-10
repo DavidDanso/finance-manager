@@ -2,7 +2,13 @@
 <!--  -->
 <li class="nav-item align-self-center">
   {% if correction_reports %}
-  <a class="nav-link" href="{% url 'corrections' %}">
+  <a
+    class="nav-link"
+    href="#"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#notification"
+    aria-controls="notification"
+  >
     <img
       id="notification_img"
       src="{% static '/images/notification.png' %}"
@@ -18,7 +24,13 @@
     /></sup>
   </a>
   {% else %}
-  <a class="nav-link" href="{% url 'corrections' %}">
+  <a
+    class="nav-link"
+    href="#"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#notification"
+    aria-controls="notification"
+  >
     <img
       id="notification_img"
       src="{% static '/images/notification.png' %}"

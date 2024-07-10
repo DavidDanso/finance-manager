@@ -28,6 +28,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static '/css/a_dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/notifications.css' %}" />
 
     <!-- Flowbite CSS -->
 
@@ -63,6 +64,10 @@
     <!--======================== Main-Section ================================-->
     {% include 'nav.html' %}
     <!-- end nav -->
+
+    <!-- notification -->
+    {% include 'notifications.html' %}
+    <!-- end notification -->
     <main>
       <!--=========================================== smooth-scroll-effect ===============================-->
       <div data-scroll class="page page--layout-2" id="main">
