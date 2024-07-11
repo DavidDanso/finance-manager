@@ -56,8 +56,6 @@
     data-target="#mainNav"
   >
     <!--======================== Main-Section ================================-->
-    {% include 'nav.html' %}
-    <!-- end nav -->
     <main>
       <!--=========================================== smooth-scroll-effect ===============================-->
       <div data-scroll class="page page--layout-2" id="main">
@@ -68,6 +66,16 @@
         <div id="hero">
           <div class="container-fluid">
             <div class="hero-intro">
+              <!--  -->
+              <a href="javascript:history.back()">
+                <img
+                  src="{% static '/images/left.png' %}"
+                  class="img-fluid"
+                  id="return_back"
+                  alt="return_back-img"
+                />
+              </a>
+              <!--  -->
               <h1>Profile Information</h1>
 
               <div id="user_profile">

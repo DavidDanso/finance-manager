@@ -73,6 +73,61 @@
       <!--  -->
       {% endif %}
       <!-- end accountant notification -->
+
+      <!--  -->
+
+      <!-- admin notification -->
+      {% if request.user.role == 'admin' %}
+      <!--  -->
+      {% if pending_reports %}
+      <div id="notification_container">
+        {% for report in pending_reports %}
+        <!--  -->
+        <div id="notification_div">
+          <a href="{% url 'review-report' report.id %}">
+            <img
+              src="{% static 'images/notification.png'%}"
+              class="img-fluid"
+              id="noti_bell"
+              alt="noti_bell"
+            />
+            <span id="move_txt">
+              <strong>{{report.account_owner}}</strong> has submitted a new
+              report for your review!
+              <br />
+              <small
+                >[Report description] -
+                {{report.description|truncatechars:35}}</small
+              >
+            </span>
+          </a>
+        </div>
+        <!-- end notification_div -->
+        {% endfor %}
+      </div>
+      <!-- end notification_container -->
+
+      <hr id="noti_line" />
+
+      <!--  -->
+      <a href="{% url 'pending-reports' %}" id="correction__link">
+        <span>view pending reports</span>
+      </a>
+      <!--  -->
+
+      {% else %}
+      <img
+        src="{% static 'images/inbox-tray.svg' %}"
+        class="img-fluid d-flex mx-auto"
+        id="notification_tray"
+        alt="notification_tray"
+      />
+      <h2>Zero Reports</h2>
+      <p>Congratulations! You cleared your important notifications 🎉</p>
+      {% endif %}
+      <!--  -->
+      {% endif %}
+      <!-- end admin notification -->
     </div>
     <!-- end offcanvas-body -->
   </div>

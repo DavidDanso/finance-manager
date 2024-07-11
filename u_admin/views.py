@@ -20,31 +20,27 @@ from .forms import ProfileUpdateForm, UserUpdateForm
 def admin_dashboard(request):
     if request.user.role != 'admin':
         return redirect('login')
-    
+
     user = request.user.profile
     form = ReportCreationForm()
 
     # Apply the filter
     reports = Report.objects.select_related('account_owner').all()
     report_filter = ReportFilter(request.GET, queryset=reports)
-    reports = report_filter.qs
+    reports = report_filter.qs.select_related('account_owner')
 
-    # get total pending reports
-    pending_reports_count = Report.objects.filter(status='pending').count()
+    # Get total pending reports count
+    pending_reports_count = reports.filter(status='pending').count()
 
-    # Query the database to get the sum of 'payment' where status is 'approve'
-    total_amount = Report.objects.filter(status='approve').aggregate(Sum('payment'))['payment__sum']
+    # Get total amount of approved reports
+    total_amount = reports.filter(status='approve').aggregate(Sum('payment'))['payment__sum'] or 0
 
-    # If total_amount is None, set it to 0
-    total_amount = total_amount if total_amount is not None else 0
+    # Fetch reports excluding those with 'pending' status
+    other_reports = reports.exclude(status='pending')
 
-    # Fetch reports related to the user, excluding those with 'pending' status
-    other_reports = [report for report in reports if report.status != 'pending']
+    # Fetch first 5 pending reports
+    pending_reports = reports.filter(status='pending')[:5]
 
-    # Fetch all reports with the status 'pending'[ notification ]
-    pending_reports = Report.objects.filter(status='pending')
-
-    #
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
         if form.is_valid():
@@ -53,17 +49,23 @@ def admin_dashboard(request):
             if request.user.role == "admin":
                 report.status = 'approve'
             report.save()
-            messages.success(request, '📄 Report Created Successful')
+            messages.success(request, '📄 Report Created Successfully')
             return redirect('dashboard')
-        
-    context = {'form': form, 'reports': other_reports, 
-               'filter': report_filter, 'reports_count': pending_reports_count,
-               'total_amount': total_amount, 'pending_reports': pending_reports}
+
+    context = {
+        'form': form,
+        'reports': other_reports,
+        'filter': report_filter,
+        'reports_count': pending_reports_count,
+        'total_amount': total_amount,
+        'pending_reports': pending_reports,
+    }
 
     if request.htmx:
         return render(request, 'partials/base-reports-list.html', context)
-    
+
     return render(request, 'u_admin/admin_dashboard.html', context)
+
 
 
 

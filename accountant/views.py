@@ -25,7 +25,7 @@ def accountant_dashboard(request):
     all_reports = Report.objects.select_related('account_owner').filter(account_owner=user)
 
     # Exclude reports with status 'correction' from the already fetched reports
-    other_reports = [report for report in all_reports if report.status != 'correction']
+    other_reports = [report for report in all_reports if report.status != 'correction'][:5]
 
     # Get the latest correction report from the already fetched reports
     new_correction = next((report for report in all_reports if report.status == 'correction'), None)
