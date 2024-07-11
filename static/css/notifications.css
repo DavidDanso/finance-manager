@@ -82,7 +82,7 @@ a:hover {
 
 /****************************************** notification-modal ************************************/
 #notification-offcanvas .offcanvas {
-  width: 520px;
+  width: 565px;
 }
 #notification-offcanvas .offcanvas h5 {
   font-size: 1.5rem;
@@ -110,20 +110,57 @@ a:hover {
   letter-spacing: 1px;
   text-align: center;
 }
-/*  */
-/* #save--btn { */
-/* color: var(--text-color); */
-/* background: #3e6567; */
-/* letter-spacing: 1px; */
-/* font-family: var(--text-font); */
-/* font-size: 1.1rem; */
-/* transition: all 0.5s ease-in-out; */
-/* } */
-/* #save--btn:hover { */
-/* color: var(--text-color); */
-/* background: #3e6567c4; */
-/* transition: all 0.5s ease-in-out; */
-/* } */
+
+/* notification_container */
+#notification_container {
+  margin-top: 7%;
+}
+#notification_div {
+  transition: all 0.5s ease-in-out;
+  padding: 4%;
+  padding-bottom: 35px;
+}
+#noti_bell {
+  width: 15px;
+  vertical-align: middle;
+}
+#notification_div a {
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+#notification_div:hover {
+  transition: all 0.5s ease-in-out;
+  background: #fef2d6;
+}
+#notification_div #move_txt {
+  position: absolute;
+  margin-left: 2%;
+  font-family: var(--header-font);
+}
+#notification_div #move_txt small {
+  font-family: var(--text-font);
+}
+#notification_div #move_txt strong {
+  color: #ff4539;
+}
+#noti_line {
+  margin-top: 1%;
+}
+
+/* correction__link */
+#correction__link {
+  float: right;
+  font-size: 2vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+#correction__link span {
+  border-bottom: 1px solid #ff4539;
+}
 
 /****************************************** Footer-Section ************************************/
 footer {

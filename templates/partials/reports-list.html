@@ -46,16 +46,14 @@
                   ></a>
                 </td>
                 {% if report.status in list or report.account_owner != user %}
-                <td class="icon-cell">
-                  <ion-icon name="document-lock-outline"></ion-icon>
-                </td>
+                <td class="icon-cell"></td>
                 {% else %}
                 <td>
                   <!-- Check if the report status is 'correction' -->
                   {% if report.status == 'correction' %}
                   <!-- Link to make a correction -->
                   <a href="{% url 'make-correction' report.id %}">
-                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                    <ion-icon name="link-outline"></ion-icon>
                   </a>
                   {% else %}
                   <!-- Link to edit the report -->

@@ -24,27 +24,29 @@ def accountant_dashboard(request):
     # Fetch all reports for the user in a single query using select_related
     all_reports = Report.objects.select_related('account_owner').filter(account_owner=user)
 
+    # Exclude reports with status 'correction' from the already fetched reports
+    other_reports = [report for report in all_reports if report.status != 'correction']
 
     # Get the latest correction report from the already fetched reports
-    correction = next((report for report in all_reports if report.status == 'correction'), None)
-
+    new_correction = next((report for report in all_reports if report.status == 'correction'), None)
 
     # Aggregate counts in a single query
-    status_counts = Report.objects.filter(account_owner=user).aggregate(
+    status_counts = all_reports.aggregate(
         approve_count=Count('id', filter=Q(status='approve')),
         reject_count=Count('id', filter=Q(status='reject')),
         pending_count=Count('id', filter=Q(status='pending')),
         correction_count=Count('id', filter=Q(status='correction')),
     )
 
-    # Fetch reports with the status 'correction' for the logged-in user[ notification ]
-    correction_reports = Report.objects.filter(status='correction', account_owner=user)
-
     # Extract the counts from the aggregated result
     approve_count = status_counts['approve_count']
     reject_count = status_counts['reject_count']
     pending_count = status_counts['pending_count']
     correction_count = status_counts['correction_count']
+
+    # Fetch reports with the status 'correction, approve, reject' for the logged-in user [notification]
+    notification_reports = [report for report in all_reports if report.status != 'pending'][:5]
+
 
     # get current date
     current_date = datetime.now().strftime("%B %d, %Y")
@@ -56,11 +58,13 @@ def accountant_dashboard(request):
         'pending_count': pending_count,
         'correction_count': correction_count,
         'current_date': current_date,
-        'correction': correction,
-        'correction_reports': correction_reports
+        'correction': new_correction,
+        'notification_reports': notification_reports,
+        'other_reports': other_reports,
     }
     
     return render(request, 'accountant/a_dashboard.html', context)
+
 
 
 
@@ -71,20 +75,28 @@ def corrections_page(request):
     # Get the profile of the logged-in user
     user = request.user.profile
 
-    # Fetch reports with the status 'correction' for the logged-in user
-    correction_reports = Report.objects.filter(status='correction', account_owner=user)
+    # Fetch reports with the status 'correction' and other relevant statuses for the logged-in user in a single query
+    all_reports = Report.objects.filter(account_owner=user).select_related('account_owner')
+
+    # Filter reports with status 'correction'
+    correction_reports = [report for report in all_reports if report.status == 'correction']
 
     # Count the number of correction reports
-    correction_count = correction_reports.count()
+    correction_count = len(correction_reports)
+
+    # Fetch reports with the status 'correction', 'approve', or 'reject' for notifications
+    notification_reports = [report for report in all_reports if report.status != 'pending'][:5]
 
     # Prepare the context for rendering the template
     context = {
         'correction_reports': correction_reports,  # List of correction reports
         'correction_count': correction_count,      # Total count of correction reports
+        'notification_reports': notification_reports
     }
 
     # Render the 'corrections.html' template with the context
     return render(request, 'accountant/corrections.html', context)
+
 
 
 
@@ -160,12 +172,9 @@ def create_report(request):
     reports = Report.objects.select_related('account_owner').all()
     report_filter = ReportFilter(request.GET, queryset=reports)
     reports = report_filter.qs
-
-    #
-    status_list = ['reject', 'approve', 'pending']
-
-    # Fetch reports with the status 'correction' for the logged-in user[ notification ]
-    correction_reports = Report.objects.filter(status='correction', account_owner=user)
+    
+    # Fetch reports with the status 'correction', 'approve', or 'reject' for notifications
+    notification_reports = [report for report in reports if report.status != 'pending'][:5]
 
     # create reports
     if request.method == "POST":
@@ -179,8 +188,9 @@ def create_report(request):
         
     context = {'form': form, 'reports': reports, 
                'filter': report_filter, 
-               'list': status_list, 'user': user,
-               'correction_reports': correction_reports}
+               'list': ['reject', 'approve', 'pending'], 
+               'user': user,
+               'notification_reports': notification_reports}
 
     if request.htmx:
         return render(request, 'partials/reports-list.html', context)

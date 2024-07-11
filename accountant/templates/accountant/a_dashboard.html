@@ -238,7 +238,7 @@
 
               <div class="col-md-8" id="reports-table">
                 <!--  -->
-                {% if reports %}
+                {% if other_reports %}
                 <div class="card">
                   <div class="card-body">
                     <table class="table table-hover" id="invoice_table">
@@ -253,7 +253,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {% for report in reports %}
+                        {% for report in other_reports %}
                         <tr>
                           <td>{{report.account_owner.username}}</td>
                           <td>{{report.description|truncatechars:15}}</td>

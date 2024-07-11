@@ -25,6 +25,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static '/css/reports.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/notifications.css' %}" />
 
     <!--  -->
     <script src="{% static '/js/htmx.min.js' %}"></script>
@@ -64,6 +65,10 @@
 
     <main>
       {% include 'toast.html' %}
+
+      <!-- notification -->
+      {% include 'notifications.html' %}
+      <!-- end notification -->
       <!--=========================================== smooth-scroll-effect ===============================-->
       <div data-scroll class="page page--layout-2" id="main">
         <div class="content content--full content--alternate"></div>
