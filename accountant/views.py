@@ -14,7 +14,8 @@ from accounts.models import Profile
 from openpyxl import load_workbook
 from django.db.models import Count, Q
 from datetime import datetime
-
+from django.core.paginator import Paginator
+from django.conf import settings
 
 # dashboard view
 @login_required(login_url='login')
@@ -165,37 +166,52 @@ def upload_file(request):
 def create_report(request):
     if request.user.role != 'accountant':
         return redirect('login')
+    
     user = request.user.profile
     form = ReportCreationForm()
 
-    # Apply the filter
-    reports = Report.objects.select_related('account_owner').all()
-    report_filter = ReportFilter(request.GET, queryset=reports)
-    reports = report_filter.qs
+    # Fetch all Report objects from the database with their related account_owner in a single query
+    all_reports = Report.objects.select_related('account_owner').all()
     
-    # Fetch reports with the status 'correction', 'approve', or 'reject' for notifications
-    notification_reports = [report for report in reports if report.status != 'pending'][:5]
+    # Apply the filter
+    report_filter = ReportFilter(request.GET, queryset=all_reports)
+    reports = report_filter.qs
 
-    # create reports
+    # Paginator - get the correct page number from the request
+    paginator = Paginator(reports, settings.PAGE_SIZE)
+    page_number = request.GET.get('page', 1)
+    reports_page = paginator.get_page(page_number)
+
+    # Fetch reports with the relevant statuses for the logged-in user in a single query
+    logged_user_reports = Report.objects.filter(account_owner=user).select_related('account_owner')
+    
+    # Fetch reports with status 'correction', 'approve', or 'reject' for notifications
+    notification_reports = logged_user_reports.exclude(status='pending')[:5]
+    
+    # Create reports
     if request.method == "POST":
         form = ReportCreationForm(request.POST)
         if form.is_valid():
             report = form.save(commit=False)
             report.account_owner = user
-            messages.success(request, 'Report successfully created! ✅')
             report.save()
+            messages.success(request, 'Report successfully created! ✅')
             return redirect('reports')
         
-    context = {'form': form, 'reports': reports, 
-               'filter': report_filter, 
-               'list': ['reject', 'approve', 'pending'], 
-               'user': user,
-               'notification_reports': notification_reports}
+    context = {
+        'form': form,
+        'filter': report_filter,
+        'list': ['reject', 'approve', 'pending'],
+        'user': user,
+        'notification_reports': notification_reports,
+        'reports': reports_page,
+    }
 
     if request.htmx:
         return render(request, 'partials/reports-list.html', context)
 
     return render(request, 'accountant/reports.html', context)
+
 
 
 
