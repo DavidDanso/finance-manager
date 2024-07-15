@@ -111,7 +111,12 @@
                 <div class="card">
                   <div class="card-body">
                     <h6>
-                      <ion-icon name="reader-outline"></ion-icon>
+                      <img
+                        src="{% static 'images/report-img.svg'%}"
+                        class="img-fluid"
+                        id="report__img"
+                        alt="report__img"
+                      />
                     </h6>
                     <small
                       >report data
@@ -123,15 +128,30 @@
                       {{report.description|truncatechars:40}}
                     </h3>
                     <h3 id="main_cat">
-                      <ion-icon name="checkbox-outline"></ion-icon>
+                      <img
+                        src="{% static 'images/checkbox-outline.svg'%}"
+                        class="img-fluid"
+                        id="checkbox_outline"
+                        alt="checkbox_outline"
+                      />
                       {{report.main_category|truncatechars:30}}
                     </h3>
                     <h3 id="sub_cat">
-                      <ion-icon name="checkbox-outline"></ion-icon>
+                      <img
+                        src="{% static 'images/checkbox-outline.svg'%}"
+                        class="img-fluid"
+                        id="checkbox_outline"
+                        alt="checkbox_outline"
+                      />
                       {{report.sub_category|truncatechars:30}}
                     </h3>
                     <h3 id="payment">
-                      <ion-icon name="checkbox-outline"></ion-icon>
+                      <img
+                        src="{% static 'images/checkbox-outline.svg'%}"
+                        class="img-fluid"
+                        id="checkbox_outline"
+                        alt="checkbox_outline"
+                      />
                       ${{ report.payment|floatformat:2|intcomma }}
                     </h3>
                     <!-- correction-btn -->
@@ -141,8 +161,7 @@
                         id="correction_btn"
                         class="btn"
                       >
-                        <ion-icon name="reader-outline"></ion-icon> make
-                        correction
+                        make correction
                       </a>
                     </div>
                     <!-- end correction-btn -->
@@ -188,18 +207,7 @@
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
       crossorigin="anonymous"
     ></script>
-    <!-- flowbite cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom Links -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
   </body>

@@ -227,17 +227,6 @@ a:hover {
   padding-right: 1%;
   padding-left: 1%;
 }
-#h2-text ion-icon {
-  font-size: 4.5vh;
-  vertical-align: middle;
-  margin-top: 12%;
-  color: #686d76;
-}
-#h2-icon ion-icon {
-  font-size: 3vh;
-  vertical-align: middle;
-  color: #686d76;
-}
 .correction-intro h2 {
   font-size: 2vh;
   font-family: var(--text-font);
@@ -275,9 +264,12 @@ a:hover {
   color: var(--main-color);
   letter-spacing: 1px;
 }
-#correction-card h6 ion-icon,
-#correction-card h3 ion-icon {
+#report__img {
+  width: 35px;
+}
+#checkbox_outline {
   vertical-align: middle;
+  width: 17px;
 }
 #correction-card .correction {
   background: #eadff8;
@@ -287,11 +279,6 @@ a:hover {
 }
 
 /* corrections btns */
-#correction_btn ion-icon {
-  vertical-align: middle;
-  font-size: 1.3rem;
-  margin-right: -1%;
-}
 #correction_btn {
   color: var(--text-color);
   letter-spacing: 1px;
@@ -307,23 +294,6 @@ a:hover {
   background: #3e6567c4;
   transition: all 0.5s ease-in-out;
 }
-
-/* #mark_done { */
-/* color: var(--main-color); */
-/* letter-spacing: 1px; */
-/* font-family: var(--text-font); */
-/* font-size: 1.2rem; */
-/* margin-top: -8%; */
-/* transition: all 0.5s ease-in-out; */
-/* float: right; */
-/* } */
-/* #mark_done span { */
-/* border-bottom: 1px solid var(--main-color); */
-/* } */
-/* #mark_done:hover { */
-/* color: #171b2384; */
-/* transition: all 0.5s ease-in-out; */
-/* } */
 
 /* no-data */
 #no-data {

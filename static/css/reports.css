@@ -240,28 +240,18 @@ a:hover {
 #search-btn {
   margin-top: 10px;
 }
-#search-btn ion-icon {
-  font-size: 2.6rem;
-  margin-left: 4%;
-  transition: all 0.5s ease-in-out;
-  vertical-align: middle;
-}
-#search-btn ion-icon:hover {
-  color: #171b23c5;
-  transition: all 0.5s ease-in-out;
-}
 #search-btn:focus {
   box-shadow: none !important;
   outline: 0px !important;
   border: transparent;
 }
+#search__img {
+  width: 32px;
+  vertical-align: middle;
+  margin-top: 12%;
+}
 
 /* add report */
-#new_report ion-icon {
-  vertical-align: middle;
-  font-size: 1.3rem;
-  margin-right: -2%;
-}
 #new_report {
   color: var(--text-color);
   letter-spacing: 1px;
@@ -291,11 +281,12 @@ a:hover {
   font-size: 1.4rem;
   margin-left: 4%;
 }
-#upload_excel ion-icon {
+#upload__img {
+  width: 22px;
   vertical-align: middle;
 }
 #upload_excel span {
-  border-bottom: 1px dotted #7eb1fd;
+  border-bottom: 1px solid #7eb1fd;
 }
 /****************************************** Desktop-Table-Section ************************************/
 #desktop-table {
@@ -322,10 +313,8 @@ a:hover {
   padding: 9px;
   text-transform: lowercase;
 }
-.desktop-table-intro ion-icon {
-  font-size: 1.5rem;
-  color: #333333;
-  cursor: pointer;
+#download_outline {
+  width: 23px;
 }
 
 /* status */
@@ -348,6 +337,10 @@ a:hover {
   background: #ffe2d5;
   color: #ff4539;
   font-size: 1.6vh;
+}
+
+#edit_img {
+  width: 24px;
 }
 
 /* no-edit */

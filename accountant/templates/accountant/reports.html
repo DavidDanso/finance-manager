@@ -112,7 +112,12 @@
                             id="search-btn"
                           >
                             <button type="submit" class="btn" id="search-btn">
-                              <ion-icon name="search-circle"></ion-icon>
+                              <img
+                                src="{% static 'images/search.png'%}"
+                                class="img-fluid d-flex mx-auto"
+                                id="search__img"
+                                alt="search__img"
+                              />
                             </button>
                           </div>
                           <!-- end search-btn -->
@@ -134,7 +139,7 @@
                     class="px-4 btn"
                     id="new_report"
                   >
-                    <ion-icon name="create-outline"></ion-icon> New Report
+                    New Report
                   </button>
                 </div>
                 <!-- end add report -->
@@ -149,9 +154,14 @@
               />
 
               <a href="{% url 'upload_file' %}" id="upload_excel">
-                <span
-                  ><ion-icon name="push-outline"></ion-icon> upload new excel
-                  file</span
+                <span>
+                  <img
+                    src="{% static 'images/upload.png'%}"
+                    class="img-fluid"
+                    id="upload__img"
+                    alt="upload__img"
+                  />
+                  upload new excel file</span
                 >
               </a>
               <!-- end upload_excel -->
@@ -181,14 +191,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Custom Links -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
     <script src="{% static '/js/reports.js' %}"></script>

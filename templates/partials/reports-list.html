@@ -1,3 +1,4 @@
+{% load static %}
 <!--  -->
 {% load humanize %}
 <!--  -->
@@ -41,9 +42,14 @@
                 <td>{{report.sub_category|truncatechars:15}}</td>
                 <td>${{report.payment|floatformat:2|intcomma}}</td>
                 <td>
-                  <a href="{% url 'download_report' report.id %}"
-                    ><ion-icon name="download-outline"></ion-icon
-                  ></a>
+                  <a href="{% url 'download_report' report.id %}">
+                    <img
+                      src="{% static 'images/download-outline.svg'%}"
+                      class="img-fluid"
+                      id="download_outline"
+                      alt="download_outline"
+                    />
+                  </a>
                 </td>
                 {% if report.status in list or report.account_owner != user %}
                 <td class="icon-cell"></td>
@@ -53,12 +59,12 @@
                   {% if report.status == 'correction' %}
                   <!-- Link to make a correction -->
                   <a href="{% url 'make-correction' report.id %}">
-                    <ion-icon name="link-outline"></ion-icon>
-                  </a>
-                  {% else %}
-                  <!-- Link to edit the report -->
-                  <a href="{% url 'edit-report' report.id %}">
-                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                    <img
+                      src="{% static 'images/link.png'%}"
+                      class="img-fluid"
+                      id="edit_img"
+                      alt="edit_img"
+                    />
                   </a>
                   {% endif %}
                 </td>

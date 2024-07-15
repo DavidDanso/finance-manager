@@ -216,16 +216,14 @@ a:hover {
   font-family: var(--header-font);
   font-size: 1.6rem;
 }
-#dashboard_card ion-icon {
+#approve__img {
   vertical-align: middle;
-  font-size: 1.6rem;
-  color: #027a48;
+  width: 30px;
 }
-#dashboard_card #pending_ ion-icon {
-  color: #5b616b8f;
-}
-#dashboard_card #rejected_ ion-icon {
-  color: #dc3545;
+#reject__img,
+#pending__img {
+  vertical-align: middle;
+  width: 23px;
 }
 #dashboard_card small {
   color: var(--main-color);
@@ -253,16 +251,13 @@ a:hover {
   padding-right: 1%;
   padding-left: 1%;
 }
-#h2-text ion-icon {
-  font-size: 4.5vh;
+#sync_outline {
   vertical-align: middle;
-  margin-top: 12%;
-  color: #686d76;
+  width: 36px;
 }
-#h2-icon ion-icon {
-  font-size: 3vh;
+#reader_outline {
   vertical-align: middle;
-  color: #686d76;
+  width: 22px;
 }
 .correction-intro h2 {
   font-size: 2vh;
@@ -271,10 +266,15 @@ a:hover {
   letter-spacing: 1px;
   line-height: 1.3;
 }
+#h2-text {
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
 #move_txt {
   position: absolute;
-  margin-left: 1%;
+  margin-left: 5px;
   font-family: var(--header-font);
+  line-height: 1.1;
 }
 #move_txt small {
   font-family: var(--text-font);
@@ -284,11 +284,8 @@ a:hover {
 #correction-card {
   margin-top: 3%;
 }
-#correction-card h6 {
-  font-size: 4.5vh;
-  font-family: var(--header-font);
-  color: #686d76;
-  letter-spacing: 1px;
+#report__img {
+  width: 35px;
 }
 #correction-card small {
   font-size: 2vh;
@@ -301,9 +298,9 @@ a:hover {
   color: var(--main-color);
   letter-spacing: 1px;
 }
-#correction-card h6 ion-icon,
-#correction-card h3 ion-icon {
+#checkbox_outline {
   vertical-align: middle;
+  width: 17px;
 }
 #correction-card .correction {
   background: #eadff8;
@@ -313,11 +310,6 @@ a:hover {
 }
 
 /* corrections btns */
-#corrections ion-icon {
-  vertical-align: middle;
-  font-size: 1.3rem;
-  margin-right: -2%;
-}
 #corrections {
   color: var(--text-color);
   letter-spacing: 1px;
@@ -387,10 +379,8 @@ a:hover {
   padding: 9px;
   text-transform: lowercase;
 }
-#reports-table ion-icon {
-  font-size: 1.5rem;
-  color: #333333;
-  cursor: pointer;
+#download_outline {
+  width: 23px;
 }
 
 /* status */
