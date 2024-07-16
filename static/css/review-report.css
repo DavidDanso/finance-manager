@@ -130,7 +130,8 @@ a:hover {
   font-size: 1.8rem;
   margin-top: 2%;
 }
-.hero-intro h5 ion-icon {
+#user_img {
+  width: 25px;
   vertical-align: middle;
 }
 
@@ -180,9 +181,10 @@ a:hover {
   letter-spacing: 1px;
   margin-bottom: 2%;
 }
-.hero-intro h3 ion-icon {
+#category__img,
+#cash__img {
+  width: 21px;
   vertical-align: middle;
-  font-size: 1.4rem;
 }
 .hero-intro h3 span {
   font-family: var(--text-font);

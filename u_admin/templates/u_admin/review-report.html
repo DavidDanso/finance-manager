@@ -90,7 +90,12 @@
                     <div class="card-body">
                       <h5>
                         Review report - [
-                        <ion-icon name="person-circle-sharp"></ion-icon>
+                        <img
+                          src="{% static '/images/user.png' %}"
+                          class="img-fluid"
+                          id="user_img"
+                          alt="user_img"
+                        />
                         {{report.account_owner}} ]
                       </h5>
                       <!--  -->
@@ -111,17 +116,32 @@
                       <p>{{report.description}}</p>
                       <!--  -->
                       <h3>
-                        <ion-icon name="ticket-outline"></ion-icon>
+                        <img
+                          src="{% static '/images/ticket-outline.svg' %}"
+                          class="img-fluid"
+                          id="category__img"
+                          alt="category__img"
+                        />
                         Main Category :
                         <span>{{report.main_category}}</span>
                       </h3>
                       <h3>
-                        <ion-icon name="ticket-outline"></ion-icon>
+                        <img
+                          src="{% static '/images/ticket-outline.svg' %}"
+                          class="img-fluid"
+                          id="category__img"
+                          alt="category__img"
+                        />
                         Sub Category :
                         <span>{{report.sub_category}}</span>
                       </h3>
                       <h3>
-                        <ion-icon name="cash-outline"></ion-icon>
+                        <img
+                          src="{% static '/images/cash-outline.svg' %}"
+                          class="img-fluid"
+                          id="cash__img"
+                          alt="cash__img"
+                        />
                         Payment :
                         <span>${{report.payment|floatformat:2|intcomma}}</span>
                       </h3>
@@ -202,15 +222,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Custom Links -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-    <!--  -->
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
   </body>

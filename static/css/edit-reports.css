@@ -134,8 +134,9 @@ a:hover {
   font-size: 1.8rem;
   margin-top: 2%;
 }
-.hero-intro h5 ion-icon {
+#user_img {
   vertical-align: middle;
+  width: 25px;
 }
 
 /* status */

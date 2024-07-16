@@ -227,16 +227,12 @@ a:hover {
   padding-right: 1%;
   padding-left: 1%;
 }
-#h2-text ion-icon {
-  font-size: 4.5vh;
-  vertical-align: middle;
-  margin-top: 12%;
-  color: #686d76;
+#report__img {
+  width: 35px;
 }
-#h2-icon ion-icon {
-  font-size: 3vh;
+#checkbox_outline {
   vertical-align: middle;
-  color: #686d76;
+  width: 17px;
 }
 .correction-intro h2 {
   font-size: 2vh;

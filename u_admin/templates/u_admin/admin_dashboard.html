@@ -94,7 +94,7 @@
                   class="px-4 btn"
                   id="new_report"
                 >
-                  <ion-icon name="create-outline"></ion-icon> New Report
+                  New Report
                 </button>
               </h1>
 
@@ -104,7 +104,12 @@
                   <div class="card">
                     <div class="card-body">
                       <h6>
-                        <ion-icon name="timer-outline"></ion-icon>
+                        <img
+                          src="{% static 'images/loading.png' %}"
+                          class="img-fluid"
+                          id="pending_img"
+                          alt="pending_img"
+                        />
                         pending reports
                       </h6>
                       <div id="stats">
@@ -124,7 +129,12 @@
                   <div class="card">
                     <div class="card-body">
                       <h6 id="payment">
-                        <ion-icon name="cash-outline"></ion-icon>
+                        <img
+                          src="{% static 'images/money.png' %}"
+                          class="img-fluid"
+                          id="total-payment_img"
+                          alt="total-payment_img"
+                        />
                         total payments
                       </h6>
                       <div id="stats">
@@ -152,7 +162,12 @@
                   <div class="card">
                     <div class="card-body">
                       <h6 id="users">
-                        <ion-icon name="people-outline"></ion-icon>
+                        <img
+                          src="{% static 'images/user.png' %}"
+                          class="img-fluid"
+                          id="user_img"
+                          alt="user_img"
+                        />
                         <a href="{% url 'users' %}">
                           <span>manage users</span>
                         </a>
@@ -215,7 +230,12 @@
                             id="search-btn"
                           >
                             <button type="submit" class="btn" id="search-btn">
-                              <ion-icon name="search-circle"></ion-icon>
+                              <img
+                                src="{% static 'images/search.png' %}"
+                                class="img-fluid"
+                                id="search__img"
+                                alt="search__img"
+                              />
                             </button>
                           </div>
                           <!-- end search-btn -->

@@ -1,3 +1,4 @@
+{% load static %}
 <!--  -->
 {% load humanize %}
 <!--  -->
@@ -41,13 +42,23 @@
                 <td>{{report.sub_category|truncatechars:15}}</td>
                 <td>${{report.payment|floatformat:2|intcomma}}</td>
                 <td>
-                  <a href="{% url 'download_report' report.id %}"
-                    ><ion-icon name="download-outline"></ion-icon
-                  ></a>
+                  <a href="{% url 'download_report' report.id %}">
+                    <img
+                      src="{% static 'images/download-outline.svg' %}"
+                      class="img-fluid"
+                      id="download_outline"
+                      alt="download_outline"
+                    />
+                  </a>
                 </td>
                 <td>
                   <a href="{% url 'report-edit' report.id %}">
-                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                    <img
+                      src="{% static 'images/edit.png' %}"
+                      class="img-fluid"
+                      id="edit_img"
+                      alt="edit_img"
+                    />
                   </a>
                 </td>
               </tr>

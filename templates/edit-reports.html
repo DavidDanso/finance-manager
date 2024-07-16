@@ -88,7 +88,12 @@
                     <div class="card-body">
                       <h5>
                         Edit report - [
-                        <ion-icon name="person-circle-sharp"></ion-icon>
+                        <img
+                          src="{% static '/images/user.png' %}"
+                          class="img-fluid"
+                          id="user_img"
+                          alt="user_img"
+                        />
                         {{report.account_owner}} ]
                       </h5>
                       {% if report.status == 'pending' %}

@@ -199,11 +199,6 @@ a:hover {
 }
 
 /* add report */
-#new_report ion-icon {
-  vertical-align: middle;
-  font-size: 1.3rem;
-  margin-right: -2%;
-}
 #new_report {
   color: var(--text-color);
   letter-spacing: 1px;
@@ -238,16 +233,11 @@ a:hover {
 #dashboard_card h6 span {
   border-bottom: 1px solid #2d24e9;
 }
-#dashboard_card ion-icon {
+#total-payment_img,
+#pending_img,
+#user_img {
   vertical-align: middle;
-  font-size: 1.6rem;
-  color: #5b616b8f;
-}
-#dashboard_card #payment ion-icon {
-  color: #027a48;
-}
-#dashboard_card #users ion-icon {
-  color: #2d24e9;
+  width: 23px;
 }
 #dashboard_card small {
   color: var(--main-color);
@@ -270,21 +260,20 @@ a:hover {
 }
 .reports-intro .card {
   width: 85%;
-  background-color: transparent;
   border: 1px solid #7b8fa199;
 }
 .reports-intro p {
   font-size: 2.2vh;
   font-family: var(--header-font);
-  color: var(--text-color);
+  color: var(--main-color);
   letter-spacing: 1px;
 }
 .reports-intro p small {
   font-family: var(--text-font);
-  color: var(--text-color);
+  color: var(--main-color);
 }
 .reports-intro label {
-  color: var(--text-color);
+  color: var(--main-color);
   letter-spacing: 1px;
   font-family: var(--text-font);
   font-size: 1.1rem;
@@ -292,7 +281,7 @@ a:hover {
   margin-left: 13%;
 }
 .reports-intro input {
-  color: var(--text-color);
+  color: var(--main-color);
   letter-spacing: 1px;
   font-family: var(--text-font);
   font-size: 1.1rem;
@@ -303,7 +292,7 @@ a:hover {
   margin-left: 10%;
 }
 .reports-intro select {
-  color: var(--text-color);
+  color: var(--main-color);
   letter-spacing: 1px;
   font-family: var(--text-font);
   font-size: 1.1rem;
@@ -316,31 +305,25 @@ a:hover {
   box-shadow: none !important;
   outline: 0px !important;
   border: 1px solid #7b8fa199;
-  color: var(--text-color);
+  color: var(--main-color);
 }
 #search-btn {
   margin-top: 10px;
-}
-#search-btn ion-icon {
-  font-size: 2.6rem;
-  margin-left: 4%;
-  transition: all 0.5s ease-in-out;
-  vertical-align: middle;
-  color: var(--text-color);
-}
-#search-btn ion-icon:hover {
-  color: #ffffff9a;
-  transition: all 0.5s ease-in-out;
 }
 #search-btn:focus {
   box-shadow: none !important;
   outline: 0px !important;
   border: transparent;
 }
+#search__img {
+  width: 32px;
+  vertical-align: middle;
+  margin-top: 12%;
+}
 
 /* Change the color of the calendar icon in WebKit-based browsers to white */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(100%) brightness(200%);
+  /* filter: invert(100%) brightness(200%); */
   cursor: pointer;
 }
 
@@ -406,6 +389,14 @@ input[type="date"] {
 /* no-edit */
 .icon-cell ion-icon {
   display: none;
+}
+
+/*  */
+#download_outline {
+  width: 23px;
+}
+#edit_img {
+  width: 24px;
 }
 /****************************************** Add-report-modal ************************************/
 #create-report-offcanvas .offcanvas {

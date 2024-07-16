@@ -108,7 +108,12 @@
                       <hr id="line" />
                       <div id="action_btns">
                         <a href="{% url 'edit-user' user.id %}" id="edit_user">
-                          <ion-icon name="create-sharp"></ion-icon>
+                          <img
+                            src="{% static 'images/edit.png' %}"
+                            class="img-fluid"
+                            id="edit_img"
+                            alt="edit_img"
+                          />
                         </a>
                       </div>
                     </div>
@@ -142,14 +147,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Custom Links -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
     <script src="{% static '/js/user_management.js' %}"></script>
