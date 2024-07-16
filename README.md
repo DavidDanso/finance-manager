@@ -115,16 +115,9 @@ NeonDB for serverless Postgres, and Render for hosting, and consists of two main
     &nbsp; 
     <br>
     <p align="center">
-      Home Page
+      Upload excel Page
     </p>
-    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/home-page.png?raw=true" />
-    </td> 
-    <td width="50%">
-    <br>
-    <p align="center">
-      Dashboard Screen
-    </p>
-    <img src="https://github.com/DavidDanso/swift-bill-invoice/blob/main/static/images/UI/dashboard.png?raw=true" />
+    <img src="https://github.com/DavidDanso/finance-manager/blob/main/static/images/ui/upload_excel.png" />
     </td>
   </tr>
 </table>
