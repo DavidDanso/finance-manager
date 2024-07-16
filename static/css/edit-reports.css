@@ -226,8 +226,9 @@ a:hover {
   border: 1px solid #33333327;
   padding: 2%;
 }
-.hero-intro p ion-icon {
-  color: #3e6567;
+#user__img,
+#chat__img {
+  width: 25px;
   vertical-align: middle;
 }
 

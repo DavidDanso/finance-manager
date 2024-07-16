@@ -88,7 +88,12 @@
                     <div class="card-body">
                       <h5>
                         Edit report - [
-                        <ion-icon name="person-circle-sharp"></ion-icon>
+                        <img
+                          src="{% static 'images/user.png'%}"
+                          class="img-fluid"
+                          id="user__img"
+                          alt="user__img"
+                        />
                         {{report.account_owner}} ]
                       </h5>
                       {% if report.status == 'pending' %}
@@ -103,7 +108,12 @@
                       <!--  -->
                       {% if report.report_note %}
                       <p id="msg_box">
-                        <ion-icon name="chatbox"></ion-icon>
+                        <img
+                          src="{% static 'images/chat.png'%}"
+                          class="img-fluid"
+                          id="chat__img"
+                          alt="chat__img"
+                        />
                         {{report.report_note}}
                       </p>
                       {% endif %}
@@ -230,14 +240,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Custom Links -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
     <!--  -->
     <script src="{% static '/js/jquery-min.js' %}"></script>
     <script src="{% static '/js/bootstrap.min.js' %}"></script>
