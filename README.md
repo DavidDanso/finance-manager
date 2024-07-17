@@ -109,6 +109,8 @@ NeonDB for serverless Postgres, and Render for hosting, and consists of two main
 - Admin: Log in to the Admin Dashboard to approve/reject reports, manage users, generate reports, review records, approve or send back entries for corrections, and modify records.
 
 
+## Project Interface
+
 <table width="100%"> 
   <tr>
     <td width="50%">      
