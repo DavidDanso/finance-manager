@@ -15,17 +15,17 @@ NeonDB for serverless Postgres, and Render for hosting, and consists of two main
 ## Features
 
 ### Accountant Dashboard
-- Input fields for Date, Description, Main Category, Sub Category, Receipts, and Payments.
-- Option to submit the data.
+- Input fields for Date, Description, Main Category, Sub Category, and Payments.
 - Notifications from the admin for corrections or changes.
 - Ability to upload data using an Excel file.
 - Menu displaying records sent back for changes by the admin.
+- Reset password
 
 ### Admin Dashboard
 - Approve/reject requests for modifications or Excel file uploads.
 - Generate and view reports.
 - Modify records directly.
-- Manage users (create/delete users, reset passwords, change permissions).
+- Manage users (create/delete users, change permissions).
 - Menu displaying records pending for approval from accountants.
 - Detailed view of records with the ability to approve or send back for corrections.
 - Notifications for corrections or changes.
@@ -109,13 +109,42 @@ NeonDB for serverless Postgres, and Render for hosting, and consists of two main
 - Admin: Log in to the Admin Dashboard to approve/reject reports, manage users, generate reports, review records, approve or send back entries for corrections, and modify records.
 
 
+## Project Interface
+
 <table width="100%"> 
   <tr>
     <td width="50%">      
     &nbsp; 
     <br>
     <p align="center">
-      Upload excel Page
+      Accountant Dashboard
+    </p>
+    <img src="https://github.com/DavidDanso/finance-manager/blob/main/static/images/ui/accountant.png" />
+    </td>
+    <td width="50%">      
+    &nbsp; 
+    <br>
+    <p align="center">
+      Admin Dashboard
+    </p>
+    <img src="https://github.com/DavidDanso/finance-manager/blob/main/static/images/ui/admin.png" />
+    </td>
+  </tr>
+
+   <tr>
+    <td width="50%">      
+    &nbsp; 
+    <br>
+    <p align="center">
+      Notification Modal
+    </p>
+    <img src="https://github.com/DavidDanso/finance-manager/blob/main/static/images/ui/notification.png" />
+    </td>
+    <td width="50%">      
+    &nbsp; 
+    <br>
+    <p align="center">
+      Excel Upload
     </p>
     <img src="https://github.com/DavidDanso/finance-manager/blob/main/static/images/ui/upload_excel.png" />
     </td>
