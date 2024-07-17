@@ -256,8 +256,19 @@
         <!-- End reports -->
 
         <!--=========================================== Modal ===============================-->
+        {% if reports %}
+        <!--  -->
         {% include 'reports-table.html' %}
         <!-- end eports-table -->
+        {% else %}
+        <img
+          src="{% static 'images/server-outline.svg' %}"
+          class="img-fluid d-flex mx-auto"
+          id="no-data_img"
+          alt="no-data_img"
+        />
+        <h2 id="no__data-h2">No correction available at this time</h2>
+        {% endif %}
 
         <!--=========================================== Modal ===============================-->
         {% include 'add-reports-modal.html' %}

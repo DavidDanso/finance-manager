@@ -398,6 +398,21 @@ input[type="date"] {
 #edit_img {
   width: 24px;
 }
+
+/* no-table-data */
+#no-data_img {
+  width: 9%;
+  object-fit: contain;
+  margin-top: 5%;
+}
+#no__data-h2 {
+  font-size: 2.5vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
 /****************************************** Add-report-modal ************************************/
 #create-report-offcanvas .offcanvas {
   width: 715px;
