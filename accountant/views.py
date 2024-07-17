@@ -215,29 +215,6 @@ def create_report(request):
 
 
 
-
-# edit_report view
-@login_required(login_url='login')
-def edit_report(request, pk):
-    user = request.user.profile
-    report = user.report_set.get(id=pk)
-    form = ReportEditForm(instance=report)
-
-    #
-    if request.method == "POST":
-        form = ReportEditForm(request.POST, instance=report)
-        if form.is_valid():
-            messages.success(request, 'Report successfully updated! ✅')
-            report.save()
-        else:
-            messages.error(request, 'Report update failed. 🚫')
-        
-    context = {'form': form, 'report': report}
-    return render(request, 'edit-reports.html', context)
-
-
-
-
 # download_report view
 def download_report(request, report_id):
     report = get_object_or_404(Report, id=report_id)
@@ -290,3 +267,12 @@ def download_report(request, report_id):
 
     return response
 
+
+
+
+def report_update(request, report_id):
+    user = request.user.profile
+    report = user.report_set.get(id=report_id)
+    
+    context = {'report': report}
+    return render(request, 'accountant/report-update.html', context)
