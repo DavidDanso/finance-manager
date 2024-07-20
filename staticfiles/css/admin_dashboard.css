@@ -1,0 +1,541 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--main-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Apercu-Bold";
+  src: url("../fonts/Apercu-Bold.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "GTAmerica-Light";
+  src: url("../fonts/GTAmerica-Light.woff2");
+}
+.page-content {
+  --main-color: #171b23;
+  --text-color: #f6f6f3;
+  --header-font: "Apercu-Bold";
+  --text-font: "GTAmerica-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/* django message styles */
+#alert_message {
+  width: 80%;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  margin-top: 2%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 100;
+  border: none;
+}
+.alert-error {
+  background: #dc8686 !important;
+  color: var(--main-color) !important;
+}
+.alert-success {
+  background: #c3e2c2 !important;
+  color: var(--main-color) !important;
+}
+
+/****************************************** NAVIGATION ************************************/
+#mainNav {
+  transform: translateY(0);
+  transition: padding-top 0.3s, padding-bottom 0.3s;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  background: var(--text-color);
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 9;
+  width: 100vw;
+}
+.navbar-toggler {
+  position: absolute;
+  width: 40px;
+  top: 27px;
+  right: 18px;
+  padding: 1px;
+  cursor: pointer;
+  border: 0;
+  z-index: 1;
+}
+.navbar-toggler span {
+  display: block;
+  background: var(--main-color);
+  width: 30px;
+  height: 1px;
+  transition: 300ms linear all;
+}
+.navbar-toggler span:nth-child(1),
+.navbar-toggler span:nth-child(3) {
+  width: 15px;
+}
+.navbar-toggler span:nth-child(2) {
+  width: 37px;
+  margin: 5px 0;
+}
+.navbar-toggler span:nth-child(3) {
+  float: right;
+}
+.navbar-toggler:hover span:nth-child(1),
+.navbar-toggler:hover span:nth-child(3) {
+  width: 35px;
+}
+#profile_img {
+  width: 35px;
+}
+#mainNav small {
+  font-size: 1.2rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+#mainNav .navbar-brand {
+  color: #8858d1;
+}
+.left--links a {
+  font-family: var(--text-font);
+  color: #999;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  line-height: normal;
+}
+
+/* nav-|| */
+#nav_span {
+  margin-left: 1px;
+  margin-right: 12px;
+}
+#notification_img {
+  width: 25px;
+  vertical-align: middle;
+}
+#notification_dot {
+  width: 9px;
+  margin-left: -42%;
+  margin-top: -15%;
+}
+
+/****************************************** Hero-Section ************************************/
+#hero {
+  margin-top: 6%;
+}
+.hero-intro {
+  margin: 3%;
+}
+.hero-intro h1 {
+  font-size: 4.2vh;
+  font-family: var(--header-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  margin-bottom: 2%;
+}
+
+/* add report */
+#new_report {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  float: right;
+  cursor: pointer;
+  line-height: 1.4;
+  background-color: #3e6567;
+  transition: all 0.5s ease-in-out;
+}
+#new_report:hover {
+  color: var(--text-color);
+  background: #3e6567c4;
+  transition: all 0.5s ease-in-out;
+}
+
+/* dashboard card */
+#dashboard_card #stats {
+  background-color: #c1c7d157;
+  border-radius: 5px;
+  padding: 3%;
+}
+#dashboard_card h6 {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+#dashboard_card h6 span {
+  border-bottom: 1px solid #2d24e9;
+}
+#total-payment_img,
+#pending_img,
+#user_img {
+  vertical-align: middle;
+  width: 23px;
+}
+#dashboard_card small {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--header-font);
+  font-size: 1.3rem;
+}
+
+/*  */
+#page_line {
+  margin-top: 3%;
+}
+
+/****************************************** reports-section ************************************/
+#reports {
+  margin-top: -1%;
+}
+.reports-intro {
+  margin: 3%;
+}
+.reports-intro .card {
+  width: 85%;
+  border: 1px solid #7b8fa199;
+}
+.reports-intro p {
+  font-size: 2.2vh;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+.reports-intro p small {
+  font-family: var(--text-font);
+  color: var(--main-color);
+}
+.reports-intro label {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  margin-bottom: 2%;
+  margin-left: 13%;
+}
+.reports-intro input {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+  background: transparent;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-left: 10%;
+}
+.reports-intro select {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+  margin-left: 12%;
+  background: transparent;
+}
+.reports-intro select:focus,
+.reports-intro input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #7b8fa199;
+  color: var(--main-color);
+}
+#search-btn {
+  margin-top: 10px;
+}
+#search-btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: transparent;
+}
+#search__img {
+  width: 32px;
+  vertical-align: middle;
+  margin-top: 12%;
+}
+
+/* Change the color of the calendar icon in WebKit-based browsers to white */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  /* filter: invert(100%) brightness(200%); */
+  cursor: pointer;
+}
+
+/* Additional styling for the date input */
+input[type="date"] {
+  padding: 5px;
+  font-size: 16px;
+}
+
+/****************************************** Desktop-Table-Section ************************************/
+#desktop-table {
+  margin-top: 1%;
+}
+.desktop-table-intro {
+  margin: 3%;
+}
+.desktop-table-intro .card {
+  border: 1px solid var(--text-color);
+  background: #f7f7f7f9;
+}
+.desktop-table-intro table {
+  margin-bottom: 0px;
+}
+.desktop-table-intro th {
+  background-color: transparent;
+}
+.desktop-table-intro td {
+  font-size: 1.9vh;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+  padding: 9px;
+  text-transform: lowercase;
+}
+.desktop-table-intro ion-icon {
+  font-size: 1.5rem;
+  color: #333333;
+  cursor: pointer;
+}
+
+/* status */
+.desktop-table-intro .pending {
+  background: #c1c7d1ca;
+  color: #5b616bca;
+  font-size: 1.6vh;
+}
+.desktop-table-intro .correction {
+  background: #eadff8;
+  color: #8d75e6;
+  font-size: 1.6vh;
+}
+.desktop-table-intro .approve {
+  background: #d9ffe0;
+  color: #027a48ae;
+  font-size: 1.6vh;
+}
+.desktop-table-intro .reject {
+  background: #ffe2d5;
+  color: #ff4639;
+  font-size: 1.6vh;
+}
+
+/* no-edit */
+.icon-cell ion-icon {
+  display: none;
+}
+
+/*  */
+#download_outline {
+  width: 23px;
+}
+#edit_img {
+  width: 24px;
+}
+
+/* no-table-data */
+#no-data_img {
+  width: 9%;
+  object-fit: contain;
+  margin-top: 5%;
+}
+#no__data-h2 {
+  font-size: 2.5vh;
+  font-family: var(--text-font);
+  color: var(--text-color);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/****************************************** Add-report-modal ************************************/
+#create-report-offcanvas .offcanvas {
+  width: 715px;
+}
+#create-report-offcanvas .offcanvas .card {
+  border: 1px solid #6b728067;
+}
+#report-add-row {
+  margin-top: 12%;
+}
+#create-report-offcanvas .offcanvas h5 {
+  font-size: 1.5rem;
+  font-family: var(--header-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+#create-report-offcanvas .offcanvas h5 span {
+  font-family: var(--text-font);
+  color: #6b7280;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+#create-report-offcanvas .offcanvas label {
+  font-size: 1.1rem;
+  font-family: var(--text-font);
+  color: var(--main-color);
+  letter-spacing: 1px;
+}
+#create-report-offcanvas .offcanvas .input {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  border: 1px solid #7b8fa1;
+}
+#create-report-offcanvas .offcanvas form input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+  border: 1px solid #7b8fa199;
+  color: var(--main-color);
+}
+#create-report-offcanvas .offcanvas form input::placeholder {
+  color: #7b8fa199;
+}
+#save--btn {
+  color: var(--text-color);
+  background: #3e6567;
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  transition: all 0.5s ease-in-out;
+}
+#save--btn:hover {
+  color: var(--text-color);
+  background: #3e6567c4;
+  transition: all 0.5s ease-in-out;
+}
+
+/****************************************** Footer-Section ************************************/
+footer {
+  margin-top: -2%;
+}
+footer p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.8vh;
+  text-align: center;
+}
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+  body {
+    display: none;
+  }
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body {
+    display: none;
+  }
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+  /* django message styles */
+  #alert_message {
+    width: 25%;
+    font-size: 1rem;
+    margin-top: 2%;
+    top: 7%;
+    left: 40%;
+  }
+
+  /*  */
+  #mainNav small {
+    font-size: 1.1rem;
+  }
+  .left--links {
+    margin-left: 4%;
+  }
+  .left--links a {
+    font-size: 1.1rem;
+  }
+
+  /****** hero-Section ******/
+
+  /****** hero-Section ******/
+  /****** hero-Section ******/
+  /****** hero-Section ******/
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+}

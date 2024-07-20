@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('admins/', include('u_admin.urls')),
     path('accountant/', include('accountant.urls')),
-    path("__debug__/", include("debug_toolbar.urls")),
+    # path("__debug__/", include("debug_toolbar.urls")),
 
     # change password
     path('password_change/', auth_views.PasswordChangeView.as_view(template_name='password_change.html'), name='password_change'),

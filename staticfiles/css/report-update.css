@@ -1,0 +1,195 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--main-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.line div {
+  visibility: hidden;
+}
+
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "Apercu-Bold";
+  src: url("../fonts/Apercu-Bold.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "GTAmerica-Light";
+  src: url("../fonts/GTAmerica-Light.woff2");
+}
+.page-content {
+  --main-color: #171b23;
+  --text-color: #f6f6f3;
+  --header-font: "Apercu-Bold";
+  --text-font: "GTAmerica-Light";
+}
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/*change color of text highlight*/
+::-moz-selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+
+::selection {
+  color: var(--main-color);
+  background: var(--text-color);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/****************************************** ****** ************************************/
+#hero {
+  margin-top: 2%;
+}
+.hero-intro {
+  margin: 3%;
+}
+#return_back {
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--text-color);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 3%;
+}
+
+/*  */
+.hero-intro h5 {
+  letter-spacing: 1px;
+  font-family: var(--header-font);
+  font-size: 1.8rem;
+  margin-top: 2%;
+}
+#user_img {
+  vertical-align: middle;
+  width: 25px;
+}
+
+/* status */
+.hero-intro .badge {
+  margin-bottom: 5%;
+}
+.hero-intro .approve {
+  background: #d9ffe0;
+  color: #027a48;
+  font-size: 1.6vh;
+}
+.hero-intro .reject {
+  background: #ffe2d5;
+  color: #ff4539;
+  font-size: 1.6vh;
+}
+
+/* make-correction */
+.hero-intro #update_card {
+  max-width: 50%;
+  margin-top: 6%;
+}
+.hero-intro #update_card .badge {
+  margin-bottom: 5%;
+}
+.hero-intro h6 {
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.1rem;
+  margin-bottom: 2%;
+}
+#msg_box {
+  margin-bottom: 1%;
+}
+.hero-intro p {
+  color: var(--main-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 6%;
+  border: 1px solid #33333327;
+  padding: 2%;
+}
+#user__img,
+#chat__img {
+  width: 25px;
+  vertical-align: middle;
+}
+
+/* ReportNote */
+#ReportNote {
+  margin-top: 3%;
+}
+
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+  body {
+    display: none;
+  }
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    display: none;
+  }
+}
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body {
+    display: none;
+  }
+}
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body {
+    display: none;
+  }
+}
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+}
+
+/************************ Extra large devices (extra large desktops, 1900px and up) ********************************/
+@media (min-width: 2000px) {
+}
